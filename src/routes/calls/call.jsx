@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 //import { confirm } from "../components/Confirmation";
 
 
@@ -39,15 +39,22 @@ function PageMap({ data }) {
     width: "100%",
     height: "400px"
   }
-  const center = {
-    lat: 35.8158871065979,
-    lng: -78.65528542793695
-  }
+  // const center = {
+  //   lat: 35.8158871065979,
+  //   lng: -78.65528542793695
+  // }
 
   const position = {
     lat: Number(latitude),
     lng: Number(longitude)
   }
+
+  const center = {
+    lat: Number(latitude),
+    lng: Number(longitude)
+  }
+
+  console.log(position)
 
   return (
     <>
@@ -177,8 +184,11 @@ function PageForm({ data }) {
 
 function CallPage() {
 
+
+
+
   //--- NEW 
-  const [Items, setItems] = React.useState([]);
+  const [Items, setItems] = React.useState({ items: [] });
   const [isLoading, setIsLoading] = useState(false);
   const recordId = new URLSearchParams(location.search).get("id");
 
@@ -193,17 +203,30 @@ function CallPage() {
   });
 
   useEffect(() => {
-    async function getData() {
-      //setIsLoading(true);
+    //async function getData() {
+    const getData = async () => {
+      setIsLoading(true);
       const response = await client.get(recordId, config);
       setItems(response.data);
-      //window.scrollTo(0, 0)
-     // setIsLoading(false);
+      window.scrollTo(0, 0)
+      setIsLoading(false);
     }
     getData();
   }, []);
 
- //--- Return the UI here
+
+  //------------------------------------------------------------------------
+  //--- This is dumb but needed. Don't load the page unless we have data.
+  let itemId = Items._id
+  if (itemId === undefined) {
+    return;
+  } else {
+    console.log(itemId.length)
+  }
+  //------------------------------------------------------------------------
+
+
+  //--- Return the UI here
   return (
     <React.Fragment>
       <div className="container-xl">
