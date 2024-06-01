@@ -13,7 +13,8 @@ export const DataEndpoint = (apiEndPoint, itemCount) => {
     };
 
     const client = axios.create({
-        baseURL: "https://seahorse-app-izgzv.ondigitalocean.app/api/" + apiEndPoint
+               //baseURL: "https://seahorse-app-izgzv.ondigitalocean.app/api/" + apiEndPoint
+               baseURL: "http://192.168.86.2:8080/api/" + apiEndPoint
     });
 
     React.useEffect(() => {
