@@ -1,27 +1,28 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-//--- DATA
+//--- STANDARD IMPORTS: DATA
 import { DataEndpoint } from '../../components/data/data_endpoint';
 
-//-- TABLE
+//-- STANDARD IMPORTS: TABLE
 import DataTable from '../../components/layout/data_table';
 
-
-//--- MAP
+//--- STANDARD IMPORTS: MAP
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 
-//--- CHARTS
+//--- CUSTOM IMPORTS: CHARTS
 import { CallCountsByAgencyBarChart } from './call_counts_by_agency';
 import { CallCountsByIncidentBarChart } from './call_counts_by_incident';
 import { CallCountsByEmdCodeBarChart } from './call_counts_by_emd_code';
 import { CallCountsByHourLineChart } from './call_counts_by_hour';
 
+//--- SET PAGE NAME
 function PageName() {
   return "Calls"
 }
 
+//--- BUILD MAP
 function PageMap({ data }) {
 
   const mapRef = useRef();
@@ -70,6 +71,7 @@ function PageMap({ data }) {
   )
 }
 
+//--- BUILD CHARTS
 function PageCharts() {
   return (
     <>
@@ -95,10 +97,12 @@ function PageCharts() {
   )
 }
 
+//--- BUILD TABLE
 function PageTable({ columns, data }) {
   return DataTable(columns, data)
 }
 
+//--- BUILD TABLE COLUMNS
 function TableColumns() {
 
   const columns = React.useMemo(
@@ -138,13 +142,16 @@ function TableColumns() {
   return columns
 }
 
+//--- BUILD PAGE
 export default function CallsPage() {
 
+  //--- data elements
   var getAllName = "getAllCalls"
   var tableColumns = TableColumns();
   var tableData = DataEndpoint(getAllName, 100);
   var mapData = DataEndpoint(getAllName, 20);
 
+  //--- return the assembled page
   return (
     <div className="container-xl">
       <h1 className="display-6"><PageName /></h1>
@@ -158,6 +165,7 @@ export default function CallsPage() {
           <PageCharts />
         </div>
       </div>
+      
       <p></p>
 
       <div className="card">
@@ -169,6 +177,8 @@ export default function CallsPage() {
         </div>
       </div>
 
+      <p></p>
+
       <div className="card">
         <div className="card-header">
           Data
@@ -178,8 +188,6 @@ export default function CallsPage() {
         </div>
       </div>
     </div>
-
-
   )
 }
 

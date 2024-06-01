@@ -1,16 +1,24 @@
 import React from "react";
+
+//--- IMPORTS: CHART ELEMENTS
 import { Line } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
 import { ChartDataLibrary } from '../../components/data/chart_data_library'
 
+//--- SET THE CHART SCOPE
+var chartScope = "getCallCountsByHour";
+var chartName = "Calls by Hour of Day";
+
+//--- BUILD CHART ELEMENT
 export const CallCountsByHourLineChart = () => {
 
-    var chartActualData = ChartDataLibrary("getCallCountsByHour", 25);
+    var chartActualData = ChartDataLibrary(chartScope, 25);
 
     const chartData = {
         labels: chartActualData.map(item => item._id),
         datasets: [
             {
-                label: 'Calls for Assistance',
+                label: {chartScope},
                 data: chartActualData.map(item => item.HourCount),
                 borderColor: 'rgba(110, 110, 110, 0.8)',
                 borderWidth: 1,
@@ -31,9 +39,9 @@ export const CallCountsByHourLineChart = () => {
 
     return (
         <>
-            <h5>Calls by Hour of Day</h5>
-            <Line data={chartData} options={chartOptions} id="getCallCountsByHour" />
+            <h5>{chartName}</h5>
+            <Line data={chartData} options={chartOptions} id={chartScope} />
         </>
     );
-};
+    };
 

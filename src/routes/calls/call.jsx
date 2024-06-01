@@ -4,17 +4,18 @@ import Form from 'react-bootstrap/Form';
 import { set, useForm } from "react-hook-form";
 //import { confirm } from "../components/Confirmation";
 
+//--- IMPORTS: DATA
+import { DataSingleEndpoint } from '../../components/data/data_single_endpoint';
 
-//--- DATA
-import axios from "axios";
-
-//--- MAP
+//--- IMPORTS: MAP
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 
+//--- SET PAGE NAME
 function PageName() {
   return "Call Details"
 }
 
+//--- BUILD MAP
 function PageMap({ data }) {
 
   let longitude
@@ -39,10 +40,6 @@ function PageMap({ data }) {
     width: "100%",
     height: "400px"
   }
-  // const center = {
-  //   lat: 35.8158871065979,
-  //   lng: -78.65528542793695
-  // }
 
   const position = {
     lat: Number(latitude),
@@ -53,8 +50,6 @@ function PageMap({ data }) {
     lat: Number(latitude),
     lng: Number(longitude)
   }
-
-  console.log(position)
 
   return (
     <>
@@ -70,7 +65,7 @@ function PageMap({ data }) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <Marker key={data.recordId} position={position}>
+        <Marker key={data._id} position={position}>
           <Popup>
             {data.callDate} at {data.callTime}<br />
             {data.agency}<br />
@@ -78,13 +73,12 @@ function PageMap({ data }) {
             {data.location}<br />
           </Popup>
         </Marker>
-
-
       </MapContainer>
     </>
   )
 }
 
+ //--- BUILD FORM
 function PageForm({ data }) {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -182,51 +176,23 @@ function PageForm({ data }) {
   )
 }
 
-function CallPage() {
+//--- BUILD PAGE
+export default function CallPage() {
 
+  //--- data elements
+  var getOneName = "getCall"
+  var recordId = new URLSearchParams(location.search).get("id");
+  var formData = DataSingleEndpoint(getOneName, recordId);
 
-
-
-  //--- NEW 
-  const [Items, setItems] = React.useState({ items: [] });
-  const [isLoading, setIsLoading] = useState(false);
-  const recordId = new URLSearchParams(location.search).get("id");
-
-  const config = {
-    headers: {
-      'x-api-key': '9YGxIQziMuYzgMSWmYePfxRWYdeiwLKn'
-    }
-  };
-
-  const client = axios.create({
-    baseURL: "https://seahorse-app-izgzv.ondigitalocean.app/api/getCall/"
-  });
-
-  useEffect(() => {
-    //async function getData() {
-    const getData = async () => {
-      setIsLoading(true);
-      const response = await client.get(recordId, config);
-      setItems(response.data);
-      window.scrollTo(0, 0)
-      setIsLoading(false);
-    }
-    getData();
-  }, []);
-
-
-  //------------------------------------------------------------------------
-  //--- This is dumb but needed. Don't load the page unless we have data.
-  let itemId = Items._id
+  //--- don't load the page unless we have data.
+  let itemId = formData._id
   if (itemId === undefined) {
     return;
   } else {
     console.log(itemId.length)
   }
-  //------------------------------------------------------------------------
 
-
-  //--- Return the UI here
+  //--- return the assembled page
   return (
     <React.Fragment>
       <div className="container-xl">
@@ -234,10 +200,10 @@ function CallPage() {
         <p></p>
         <div className="card">
           <div className="card-header">
-            Maps
+            Map
           </div>
           <div className="card-body">
-            <PageMap data={Items} />
+            <PageMap data={formData} />
           </div>
         </div>
         <p></p>
@@ -246,7 +212,7 @@ function CallPage() {
             Form
           </div>
           <div className="card-body">
-            <PageForm data={Items} />
+            <PageForm data={formData} />
           </div>
         </div>
         <p></p>
@@ -254,5 +220,3 @@ function CallPage() {
     </React.Fragment>
   )
 }
-
-export default CallPage

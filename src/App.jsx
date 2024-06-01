@@ -16,7 +16,7 @@ const PageLayout = () => (
     </header>
     <Outlet />
     <footer>
-      {/* <Footer /> */}
+      <Footer />
     </footer>
     <GoToTop />
   </>
