@@ -22,6 +22,7 @@ export const DataEndpoint = (apiEndPoint, itemCount) => {
             .then((response) => {
                 setItems(response.data);
             });
+            return () => client.disconnect();
     }, []);
 
     return Items
