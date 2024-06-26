@@ -12,6 +12,7 @@ export default function Header() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="/Calls">Calls</Nav.Link>
+                        <Nav.Link href="/Dev">Dev</Nav.Link>
                         {/*<Nav.Link href="/Incidents">Incidents</Nav.Link>
                         <Nav.Link href="/Adsb">ADSB</Nav.Link>
                          <Nav.Link href="/Crashes">Crashes</Nav.Link>

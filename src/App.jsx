@@ -7,6 +7,8 @@ import CallsPage from './routes/calls'
 import CallPage from './routes/calls/call';
 import GoToTop from './components/layout/gototop';
 
+import DevPage from './routes/dev';
+
 
 const PageLayout = () => (
   <>
@@ -37,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "call/",
         element: <CallPage />,
+      },
+      {
+        path: "dev/",
+        element: <DevPage />,
       },
       // {
       //   path: "adsb/",
