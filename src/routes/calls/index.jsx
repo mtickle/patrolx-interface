@@ -1,15 +1,5 @@
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
 
-//--- STANDARD IMPORTS: DATA
-import { DataEndpoint } from '../../components/data/data_endpoint';
-
-//-- STANDARD IMPORTS: TABLE
-import DataTable from '../../components/layout/data_table';
-
-//--- STANDARD IMPORTS: MAP
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
-import "leaflet/dist/leaflet.css"
 
 //--- CUSTOM IMPORTS: CHARTS
 import { CallCountsByAgencyBarChart } from './call_counts_by_agency';
@@ -17,58 +7,15 @@ import { CallCountsByIncidentBarChart } from './call_counts_by_incident';
 import { CallCountsByEmdCodeBarChart } from './call_counts_by_emd_code';
 import { CallCountsByHourLineChart } from './call_counts_by_hour';
 
+//--- CUSTOM IMPORTS: DATA TABLES
+import { CallDataTable } from './call_table';
+
+//--- CUSTOM IMPORTS: DATA MAP
+import { CallsMap } from './call_map';
+
 //--- SET PAGE NAME
 function PageName() {
   return "Calls"
-}
-
-//--- BUILD MAP
-function PageMap({ data }) {
-
-  const mapRef = useRef();
-  const zoom = 11;
-  const containerStyle = {
-    width: "100%",
-    height: "400px"
-  }
-  const center = {
-    lat: 35.8158871065979,
-    lng: -78.65528542793695
-  }
-
-  return (
-    <>
-      <MapContainer
-        style={containerStyle}
-        center={center}
-        zoom={zoom}
-        scrollWheelZoom={false}
-        ref={mapRef}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-
-        {data.map((item, index) => {
-          let position = {
-            lat: Number(item.latitude.trim()),
-            lng: Number(item.longitude.trim())
-          };
-
-          return <Marker key={index} position={position}>
-            <Popup>
-              {item.callDate} at {item.callTime}<br />
-              {item.agency}<br />
-              {item.incidentType}<br />
-              {item.location}<br />
-            </Popup>
-          </Marker>
-        })}
-
-      </MapContainer>
-    </>
-  )
 }
 
 //--- BUILD CHARTS
@@ -89,7 +36,7 @@ function PageCharts() {
             <CallCountsByEmdCodeBarChart />
           </div>
           <div className="col-md">
-            <CallCountsByHourLineChart /> 
+            <CallCountsByHourLineChart />
           </div>
         </div>
       </div>
@@ -97,59 +44,10 @@ function PageCharts() {
   )
 }
 
-//--- BUILD TABLE
-function PageTable({ columns, data }) {
-  return DataTable(columns, data)
-}
-
-//--- BUILD TABLE COLUMNS
-function TableColumns() {
-
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: 'Date',
-        accessor: 'callDate',
-      },
-      {
-        Header: 'Time',
-        accessor: 'callTime',
-      },
-      {
-        Header: 'Responding Agency',
-        accessor: 'agency',
-      },
-      {
-        Header: 'Incident',
-        accessor: 'incidentType',
-      },
-      {
-        Header: 'Location',
-        accessor: 'location',
-      },
-      {
-        Header: "",
-        id: "",
-        accessor: "_id",
-          Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{ 
-            pathname: `/call`,
-            search:  `?id=${row.original._id}`,
-          }}>View</Link>)            
-      }
-    ],
-    []
-  )
-  return columns
-}
-
 //--- BUILD PAGE
 export default function CallsPage() {
 
-  //--- data elements
-  var getAllName = "getAllCalls"
-  var tableColumns = TableColumns();
-  var tableData = DataEndpoint(getAllName, 100);
-  var mapData = DataEndpoint(getAllName, 20);
+  console.log("page loading ...")
 
   //--- return the assembled page
   return (
@@ -165,7 +63,7 @@ export default function CallsPage() {
           <PageCharts />
         </div>
       </div>
-      
+
       <p></p>
 
       <div className="card">
@@ -173,7 +71,7 @@ export default function CallsPage() {
           Maps
         </div>
         <div className="card-body">
-          <PageMap data={mapData} />
+          <CallsMap />
         </div>
       </div>
 
@@ -184,7 +82,7 @@ export default function CallsPage() {
           Data
         </div>
         <div className="card-body">
-          <PageTable columns={tableColumns} data={tableData} />
+          {/* <CallDataTable /> */}
         </div>
       </div>
     </div>

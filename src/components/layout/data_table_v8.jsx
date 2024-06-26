@@ -33,8 +33,7 @@ export default function DataTable(columns, data)  {
     return (
         <>
             <table {...getTableProps()} className="table table-striped">
-                
-                {/* <thead>
+                <thead>
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map(column => (
@@ -50,25 +49,21 @@ export default function DataTable(columns, data)  {
                             ))}
                         </tr>
                     ))}
-                </thead> */}
-                
-
+                </thead>
                 <tbody {...getTableBodyProps()}>
                     {page.map((row, i) => {
                         prepareRow(row)
                         return (
                             <tr {...row.getRowProps()}>
-                                {/* {row.cells.map(cell => {
+                                {row.cells.map(cell => {
                                     return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                                })} */}
+                                })}
                             </tr>
                         )
                     })}
                 </tbody>
-
-
             </table>
-            {/* <div>
+            <div>
                 <button className="btn btn-outline-dark" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
                     {'<<'}
                 </button>{' '}
@@ -112,7 +107,7 @@ export default function DataTable(columns, data)  {
                         </option>
                     ))}
                 </select>
-            </div> */}
+            </div>
         </>
     )
 

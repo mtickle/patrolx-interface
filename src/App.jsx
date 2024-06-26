@@ -57,6 +57,7 @@ const router = createBrowserRouter([
 
 
 function App() {
+  console.log("app loading ...")
   return (
     <>
       <RouterProvider router={router} />

@@ -30,7 +30,7 @@ export const CallCountsByAgencyBarChart = () => {
     ]
   }
   const chartOptions = {
-    plugins: {
+      plugins: {
       legend: {
         display: false,
         position: 'bottom',
