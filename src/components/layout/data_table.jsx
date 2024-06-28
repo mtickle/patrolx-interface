@@ -1,9 +1,27 @@
 
 
 //-- TABLE
+import React from "react";
 import { useTable, usePagination, useSortBy } from 'react-table'
 
-export default function DataTable(columns, data)  {
+export default function DataTable(columns, data) {
+
+    const generateUUID = () => {
+        let
+            d = new Date().getTime(),
+            d2 = ((typeof performance !== 'undefined') && performance.now && (performance.now() * 1000)) || 0;
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+            let r = Math.random() * 16;
+            if (d > 0) {
+                r = (d + r) % 16 | 0;
+                d = Math.floor(d / 16);
+            } else {
+                r = (d2 + r) % 16 | 0;
+                d2 = Math.floor(d2 / 16);
+            }
+            return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
+        });
+    };
 
     const {
         getTableProps,
@@ -31,11 +49,29 @@ export default function DataTable(columns, data)  {
     )
 
     return (
+
+
         <>
             <table {...getTableProps()} className="table table-striped">
-                
-                {/* <thead>
-                    {headerGroups.map(headerGroup => (
+
+                <thead>
+                    {headerGroups.map(headerGroup => {
+                        const { key, ...mtHeaderGroupProps } = headerGroup.getHeaderGroupProps()
+                        return (
+                            <tr key={key} {...mtHeaderGroupProps}>
+                                {headerGroup.headers.map(column => {
+                                    const { key, ...mtColumn } = column.getHeaderProps()
+                                    return (
+                                        <th key={key} {...mtColumn}>
+                                            {column.render('Header')}
+                                        </th>
+                                    )
+                                })}
+                            </tr>
+                        )
+                    })}
+
+                    {/* {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map(column => (
                                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
@@ -49,26 +85,25 @@ export default function DataTable(columns, data)  {
                                     </span></th>
                             ))}
                         </tr>
-                    ))}
-                </thead> */}
-                
+                    ))} */}
+                </thead>
 
                 <tbody {...getTableBodyProps()}>
-                    {page.map((row, i) => {
-                        prepareRow(row)
-                        return (
-                            <tr {...row.getRowProps()}>
-                                {/* {row.cells.map(cell => {
-                                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                                })} */}
-                            </tr>
-                        )
+                    {page.map((mtRow, i) => {
+                        prepareRow(mtRow)
+                        return (<tr key={i}>
+                            {mtRow.cells.map(mtCell => {
+                                const { key, ...mtCellProps } = mtRow.getRowProps()
+                                return <td key={generateUUID()} {...mtCellProps}>
+                                    {mtCell.render('Cell')}
+                                </td>
+                            })}
+                        </tr>)
                     })}
                 </tbody>
-
-
             </table>
-            {/* <div>
+            
+            <div>
                 <button className="btn btn-outline-dark" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
                     {'<<'}
                 </button>{' '}
@@ -112,7 +147,7 @@ export default function DataTable(columns, data)  {
                         </option>
                     ))}
                 </select>
-            </div> */}
+            </div>
         </>
     )
 

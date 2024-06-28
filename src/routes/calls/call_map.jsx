@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import axios from "axios";
 
 // //--- STANDARD IMPORTS: DATA
-// import { DataEndpoint } from '../../components/data/data_endpoint';
+import { DataEndpoint } from '../../components/data/data_endpoint';
 
 //--- STANDARD IMPORTS: MAP
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
@@ -59,32 +59,9 @@ function PageMap({ data }) {
 
 export const CallsMap = () => {
 
-    console.log("map loading ...")
-
-    var getAllName = "getAllCalls"
-    var getRecordCount = 20
-
-    const [Items, setItems] = React.useState([]);
-
-    const config = {
-        headers: {
-            'x-api-key': '9YGxIQziMuYzgMSWmYePfxRWYdeiwLKn'
-        }
-    };
-
-    const client = axios.create({
-        baseURL: "http://192.168.86.2:8080/api/" + getAllName
-    });
-
-    React.useEffect(() => {
-        client.get('?limit=' + getRecordCount, config)
-            .then((response) => {
-                setItems(response.data);
-            });
-    }, []);
-
     //--- LOAD DATA
-    var mapData = Items;
+    var getAllName = "getAllCalls"
+    var mapData = DataEndpoint(getAllName, 20);
 
     return (
         <>

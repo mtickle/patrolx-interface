@@ -15,15 +15,16 @@ export const DataEndpoint = (apiEndPoint, itemCount) => {
     const client = axios.create({
                //baseURL: "https://seahorse-app-izgzv.ondigitalocean.app/api/" + apiEndPoint
                baseURL: "http://192.168.86.2:8080/api/" + apiEndPoint
+               //baseURL: "https://patrolx-api.onrender.com/api/" + apiEndPoint
     });
 
     React.useEffect(() => {
         client.get('?limit=' + itemCount, config)
             .then((response) => {
                 setItems(response.data);
-                //console.log(apiEndPoint + ":" + itemCount)
+                console.log(apiEndPoint + ":" + itemCount)
             });
-            return () => client.disconnect();
+            //return () => client.disconnect();
     }, []);
 
     return Items

@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 //--- STANDARD IMPORTS: DATA
 import { DataEndpoint } from '../../components/data/data_endpoint';
@@ -50,18 +51,18 @@ function TableColumns() {
         ],
         []
     )
+
     return columns
 }
 
 export const CallDataTable = () => {
 
-    console.log("data table loading ...")
+
 
     //--- LOAD DATA
-var getAllName = "getAllCalls"
-var tableColumns = TableColumns();
-var tableData = DataEndpoint(getAllName, 100);
-//var mapData = DataEndpoint(getAllName, 20);
+    var getAllName = "getAllCalls"
+    var tableColumns = TableColumns();
+    var tableData = DataEndpoint(getAllName, 100);
 
     return (
         <>

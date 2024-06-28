@@ -82,7 +82,7 @@ export default function CallsPage() {
           Data
         </div>
         <div className="card-body">
-          {/* <CallDataTable /> */}
+          <CallDataTable />
         </div>
       </div>
     </div>
