@@ -44,10 +44,10 @@ function PageMap({ data }) {
 
                     return <Marker key={index} position={position}>
                         <Popup>
-                            {item.callDate} at {item.callTime}<br />
-                            {item.agency}<br />
-                            {item.incidentType}<br />
-                            {item.location}<br />
+                            {item.reportedDate} at {item.reportedTime}<br />
+                            {item.crimeDescription}<br />
+                            {item.reportedBlockAddress}<br />
+                            {item.district}<br />
                         </Popup>
                     </Marker>
                 })}
@@ -57,15 +57,15 @@ function PageMap({ data }) {
     )
 }
 
-export const CallsMap = () => {
+export const PageDataMap = () => {
 
     //--- LOAD DATA
-    var getAllName = "getAllCalls"
+    var getAllName = "getAllIncidents"
     var mapData = DataEndpoint(getAllName, 20);
 
     return (
         <>
-            <h5>Call Map</h5>
+            <h5>Map</h5>
             <PageMap data={mapData} />
         </>
     );

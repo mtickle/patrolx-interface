@@ -11,18 +11,18 @@ import { PageDataMap } from './map';
 
 //--- SET PAGE NAME
 function PageName() {
-  return "Calls"
+  return "Arrests"
 }
 
 //--- BUILD PAGE
-export default function CallsPage() {
+export default function ArrestsPage() {
 
   //--- return the assembled page
   return (
     <div className="container-xl">
       <h1 className="display-6"><PageName /></h1>
 
-      <p></p>
+    <p></p>
       <div className="card">
         <div className="card-header">
           Charts
@@ -32,19 +32,17 @@ export default function CallsPage() {
         </div>
       </div>
 
-      <p></p>
-
+      {/* <p></p>
       <div className="card">
         <div className="card-header">
-          Maps
+          Map
         </div>
         <div className="card-body">
           <PageDataMap />
         </div>
-      </div>
+      </div>  */}
 
       <p></p>
-
       <div className="card">
         <div className="card-header">
           Data

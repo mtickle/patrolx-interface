@@ -5,9 +5,11 @@ import Footer from './components/layout/footer';
 import HomePage from './routes/home';
 import CallsPage from './routes/calls'
 import CallPage from './routes/calls/call';
+import IncidentsPage from './routes/incidents';
+import IncidentPage from './routes/incidents/incident';
+import ArrestsPage from './routes/arrests';
+import ArrestPage from './routes/arrests/arrest';
 import GoToTop from './components/layout/gototop';
-
-import DevPage from './routes/dev';
 
 
 const PageLayout = () => (
@@ -41,9 +43,23 @@ const router = createBrowserRouter([
         element: <CallPage />,
       },
       {
-        path: "dev/",
-        element: <DevPage />,
+        path: "incidents/",
+        element: <IncidentsPage />,
+      }
+      ,
+      {
+        path: "incident/",
+        element: <IncidentPage />,
       },
+      {
+        path: "arrests/",
+        element: <ArrestsPage />,
+      }
+      ,
+      {
+        path: "arrest/",
+        element: <ArrestPage />,
+      }
       // {
       //   path: "adsb/",
       //   element: <AdsbPage />,
@@ -52,10 +68,7 @@ const router = createBrowserRouter([
       //   path: "adsb/flight",
       //   element: <FlightPage />,
       // },
-      // {
-      //   path: "incidents/",
-      //   element: <IncidentsPage />,
-      // }
+
     ]
   },
 
@@ -63,7 +76,7 @@ const router = createBrowserRouter([
 
 
 function App() {
-  console.log("app loading ...")
+
   return (
     <>
       <RouterProvider router={router} />

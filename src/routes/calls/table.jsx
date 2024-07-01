@@ -55,9 +55,7 @@ function TableColumns() {
     return columns
 }
 
-export const CallDataTable = () => {
-
-
+export const PageDataTable = () => {
 
     //--- LOAD DATA
     var getAllName = "getAllCalls"
@@ -66,7 +64,7 @@ export const CallDataTable = () => {
 
     return (
         <>
-            <h5>Call Data Table</h5>
+            <h5>Data Table</h5>
             <PageTable columns={tableColumns} data={tableData} />
         </>
     );

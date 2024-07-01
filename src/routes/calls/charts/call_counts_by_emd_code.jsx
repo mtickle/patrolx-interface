@@ -3,7 +3,7 @@ import React from "react";
 //--- IMPORTS: CHART ELEMENTS
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-import { ChartDataLibrary } from '../../components/data/chart_data_library'
+import { ChartDataLibrary } from '../../../components/data/chart_data_library'
 
 //--- SET THE CHART SCOPE
 var chartScope = "getCallCountsByEmdCode";
