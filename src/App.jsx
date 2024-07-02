@@ -9,6 +9,8 @@ import IncidentsPage from './routes/incidents';
 import IncidentPage from './routes/incidents/incident';
 import ArrestsPage from './routes/arrests';
 import ArrestPage from './routes/arrests/arrest';
+import TrafficStopsPage from './routes/traffic';
+import TrafficStopPage from './routes/traffic/stop';
 import GoToTop from './components/layout/gototop';
 
 
@@ -59,6 +61,14 @@ const router = createBrowserRouter([
       {
         path: "arrest/",
         element: <ArrestPage />,
+      },
+      {
+        path: "trafficstops/",
+        element: <TrafficStopsPage />,
+      },
+      {
+        path: "trafficstop/",
+        element: <TrafficStopPage />,
       }
       // {
       //   path: "adsb/",

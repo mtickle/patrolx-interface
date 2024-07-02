@@ -14,10 +14,11 @@ export default function Header() {
                     <Nav.Link href="/Arrests">Arrests</Nav.Link>
                         <Nav.Link href="/Calls">Calls</Nav.Link>
                         <Nav.Link href="/Incidents">Incidents</Nav.Link>
+                        <Nav.Link href="/TrafficStops">Traffic Stops</Nav.Link>
                         {/*<Nav.Link href="/Adsb">ADSB</Nav.Link>
                          <Nav.Link href="/Crashes">Crashes</Nav.Link>
                         
-                        <Nav.Link href="/Traffic">Traffic Stops</Nav.Link>
+                        
                         <Nav.Link href="/EMDCodes">EMD Codes</Nav.Link>
                         <Nav.Link href="/Table">Table</Nav.Link>
                         <Nav.Link href="/About">About</Nav.Link> */}
