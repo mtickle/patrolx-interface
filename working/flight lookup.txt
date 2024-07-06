@@ -1,0 +1,19 @@
+
+
+master table
+{mode_s_code_hex:'A057CC'}
+
+{"_id":{"$oid":"64f0967e1aa1538ffe56ee0f"},
+"n_number":"121DZ",
+"serial_number":"10233",
+"mfr_mdl_code":"3940005",
+"eng_mfr_mdl":"13101",
+"year_mfr":{"$numberInt":"2021"},
+"name":"DELTA AIR LINES INC",
+"unique_id":{"$numberInt":"1342737"},
+"mode_s_code_hex":"A057CC"}
+
+
+
+reference table by mfr_mdl_code
+{code: '3940005'}

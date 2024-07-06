@@ -13,6 +13,7 @@ import TrafficStopsPage from './routes/traffic';
 import TrafficStopPage from './routes/traffic/stop';
 import CrashLocationsPage from './routes/crashes';
 import CrashLocationPage from './routes/crashes/crash';
+import AdsbPage from './routes/adsb';
 import GoToTop from './components/layout/gototop';
 
 
@@ -79,11 +80,11 @@ const router = createBrowserRouter([
       {
         path: "crashlocation/",
         element: <CrashLocationPage />,
-      }
-      // {
-      //   path: "adsb/",
-      //   element: <AdsbPage />,
-      // },
+      },
+      {
+        path: "adsb/",
+        element: <AdsbPage />,
+      },
       // {
       //   path: "adsb/flight",
       //   element: <FlightPage />,
