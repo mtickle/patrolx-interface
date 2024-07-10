@@ -5,14 +5,14 @@ import { set, useForm } from "react-hook-form";
 //import { confirm } from "../components/Confirmation";
 
 //--- IMPORTS: DATA
-import { DataSingleEndpoint } from '../../components/data/data_single_endpoint';
+import { AdsbDataSingleEndpoint } from '../../components/data/adsb_data_single_endpoint';
 
 //--- IMPORTS: MAP
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 
 //--- SET PAGE NAME
 function PageName() {
-  return "Call Details"
+  return "ADSB ICAO24 Data"
 }
 
 //--- BUILD MAP
@@ -78,7 +78,6 @@ function PageMap({ data }) {
   )
 }
 
- //--- BUILD FORM
 function PageForm({ data }) {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -99,7 +98,7 @@ function PageForm({ data }) {
 
   //--- HANDLE THE CANCEL BUTTON
   const handleCancel = () => {
-    window.location.href = '/Calls';
+    window.location.href = '/Adsb';
   };
 
 
@@ -119,87 +118,100 @@ function PageForm({ data }) {
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
 
-        {/* <Form.Group controlId="_id" className="mb-3">
-          <Form.Label>Record ID</Form.Label>
-          <Form.Control readOnly defaultValue={data ? data._id : ""} />
-        </Form.Group> */}
+{/* <Form.Group controlId="_id" className="mb-3">
+  <Form.Label>Record ID</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data._id : ""} />
+</Form.Group> */}
 
-        <Form.Group controlId="incidentType" className="mb-3">
-          <Form.Label>Incident Type</Form.Label>
-          <Form.Control readOnly defaultValue={data ? data.incidentType : ""} />
-        </Form.Group>
+<Form.Group controlId="manufacturerName" className="mb-3">
+  <Form.Label>manufacturerName</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data.manufacturerName : ""} />
+</Form.Group>
 
-        <Form.Group controlId="agency" className="mb-3">
-          <Form.Label>Agency</Form.Label>
-          <Form.Control readOnly defaultValue={data ? data.agency : ""} />
-        </Form.Group>
+<Form.Group controlId="model" className="mb-3">
+  <Form.Label>model</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data.model : ""} />
+</Form.Group>
 
-        <Form.Group controlId="location" className="mb-3">
-          <Form.Label>Location</Form.Label>
-          <Form.Control readOnly defaultValue={data ? data.location : ""} />
-        </Form.Group>
+{/* <Form.Group controlId="crimeCode" className="mb-3">
+  <Form.Label>Crime Code</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data.crimeCode : ""} />
+</Form.Group>
 
-        <Form.Group controlId="callDate" className="mb-3">
-          <Form.Label>Call Date</Form.Label>
-          <Form.Control readOnly defaultValue={data ? data.callDate : ""} />
-        </Form.Group>
+<Form.Group controlId="district" className="mb-3">
+  <Form.Label>District</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data.district : ""} />
+</Form.Group>
+
+<Form.Group controlId="reportedDate" className="mb-3">
+  <Form.Label>Reported Date</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data.reportedDate : ""} />
+</Form.Group>
 
 
-        <Form.Group controlId="callTime" className="mb-3">
-          <Form.Label>Call Time</Form.Label>
-          <Form.Control readOnly defaultValue={data ? data.callTime : ""} />
-        </Form.Group>
+<Form.Group controlId="reportedTime" className="mb-3">
+  <Form.Label>Reported Time</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data.reportedTime : ""} />
+</Form.Group>
 
-        <Form.Group controlId="latitude" className="mb-3">
-          <Form.Label>Latitude</Form.Label>
-          <Form.Control readOnly defaultValue={data ? data.latitude : ""} />
-        </Form.Group>
+<Form.Group controlId="latitude" className="mb-3">
+  <Form.Label>Latitude</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data.latitude : ""} />
+</Form.Group>
 
-        <Form.Group controlId="longitude" className="mb-3">
-          <Form.Label>Longitude</Form.Label>
-          <Form.Control readOnly defaultValue={data ? data.longitude : ""} />
-        </Form.Group>
+<Form.Group controlId="longitude" className="mb-3">
+  <Form.Label>Longitude</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data.longitude : ""} />
+</Form.Group> */}
 
-        <Form.Group className="mb-3">
+<Form.Group className="mb-3">
 
-          {/* <Button className="btn btn-primary me-1" variant="primary" type="submit">Submit</Button>
-          {showDeleteButton && (
-            <Button className="btn btn-danger me-1" id="deleteButton" type="submit" onClick={handleDelete}>Delete</Button>
-          )} */}
+  {/* <Button className="btn btn-primary me-1" variant="primary" type="submit">Submit</Button>
+  {showDeleteButton && (
+    <Button className="btn btn-danger me-1" id="deleteButton" type="submit" onClick={handleDelete}>Delete</Button>
+  )} */}
 
-          <button className="btn btn-secondary mr-1" type="submit" onClick={handleCancel}>Cancel</button>
+  <button className="btn btn-secondary mr-1" type="submit" onClick={handleCancel}>Cancel</button>
 
-        </Form.Group>
-      </Form>
+</Form.Group>
+</Form>
     </>
 
   )
 }
 
+
+
+
 //--- BUILD PAGE
-export default function CallPage() {
+export default function AdsbIcao24Page() {
+
+ 
 
   //--- data elements
-  var getOneName = "getCall"
-  var recordId = new URLSearchParams(location.search).get("id");
-  var formData = DataSingleEndpoint(getOneName, recordId);
+  var getOneName = "getAircrafts"
+  var recordId = new URLSearchParams(location.search).get("icao24").toLowerCase();
+  var formData = AdsbDataSingleEndpoint(getOneName, recordId);
 
-  console.log(formData)
+  console.log(recordId)
 
   //--- don't load the page unless we have data.
-  let itemId = formData._id
-  if (itemId === undefined) {
-    return;
-  } else {
-    console.log(itemId.length)
-  }
+  // let itemId = formData.ica024
+  // if (itemId === undefined) {
+  //   return;
+  // } else {
+  //   console.log(itemId.length)
+  // }
 
+
+console.log(formData)
   //--- return the assembled page
   return (
     <React.Fragment>
       <div className="container-xl">
         <h1 className="display-6"><PageName /></h1>
-        <p></p>
+        
+        {/* <p></p>
         <div className="card">
           <div className="card-header">
             Map
@@ -207,7 +219,8 @@ export default function CallPage() {
           <div className="card-body">
             <PageMap data={formData} />
           </div>
-        </div>
+        </div> */}
+        
         <p></p>
         <div className="card">
           <div className="card-header">
@@ -217,8 +230,11 @@ export default function CallPage() {
             <PageForm data={formData} />
           </div>
         </div>
+
         <p></p>
       </div>
     </React.Fragment>
   )
 }
+
+

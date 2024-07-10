@@ -19,24 +19,25 @@ function TableColumns() {
     const columns = React.useMemo(
         () => [
             {
-                Header: "Flight",
-                id: "",
-                accessor: "flight",
-                Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
-                   pathname: `/adsb/flight`,
-                    //search: `?id=${row.original._id}`,
-                    search: `?flight=${row.original.flight}`,
-                }}>{row.original.flight}</Link>)
-            },
-            {
-                Header: "Hex Code",
+                Header: "ICAO24",
                 id: "",
                 accessor: "hex_code",
                 Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
-                   pathname: `/adsb/hex`,
-                    search: `?hexcode=${row.original.hex_code}`,
+                   pathname: `/adsb/icao24`,
+                    search: `?icao24=${row.original.hex_code}`,
                 }}>{row.original.hex_code}</Link>)
             },
+            {
+                Header: "Flight",
+                //id: "",
+                accessor: "flight",
+                // Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
+                //    pathname: `/adsb/flight`,
+                //     //search: `?id=${row.original._id}`,
+                //     search: `?flight=${row.original.flight}`,
+                // }}>{row.original.flight}</Link>)
+            },
+           
             {
                 Header: 'Cat',
                 accessor: 'category',
