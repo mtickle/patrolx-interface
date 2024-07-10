@@ -23,9 +23,9 @@ function TableColumns() {
                 id: "",
                 accessor: "flight",
                 Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
-                   pathname: `/flight`,
-                    target: "_blank",
-                    search: `${row.original.hex_code}`,
+                   pathname: `/adsb/flight`,
+                    //search: `?id=${row.original._id}`,
+                    search: `?flight=${row.original.flight}`,
                 }}>{row.original.flight}</Link>)
             },
             {
@@ -33,9 +33,8 @@ function TableColumns() {
                 id: "",
                 accessor: "hex_code",
                 Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
-                   pathname: `/adsb/hex/`,
-                    target: "_blank",
-                    search: `${row.original.hex_code}`,
+                   pathname: `/adsb/hex`,
+                    search: `?hexcode=${row.original.hex_code}`,
                 }}>{row.original.hex_code}</Link>)
             },
             {

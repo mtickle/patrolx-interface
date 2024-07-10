@@ -15,6 +15,8 @@ import CrashLocationsPage from './routes/crashes';
 import CrashLocationPage from './routes/crashes/crash';
 import AdsbPage from './routes/adsb';
 import GoToTop from './components/layout/gototop';
+import AdsbFlightPage from './routes/adsb/flight';
+import AdsbHexCodePage from './routes/adsb/hexcode';
 
 
 const PageLayout = () => (
@@ -85,10 +87,14 @@ const router = createBrowserRouter([
         path: "adsb/",
         element: <AdsbPage />,
       },
-      // {
-      //   path: "adsb/flight",
-      //   element: <FlightPage />,
-      // },
+      {
+        path: "adsb/flight",
+        element: <AdsbFlightPage />,
+      },
+      {
+        path: "adsb/hex",
+        element: <AdsbHexCodePage />,
+      },
 
     ]
   },
