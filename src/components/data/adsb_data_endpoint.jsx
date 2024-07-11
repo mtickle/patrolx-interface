@@ -13,8 +13,9 @@ export const DataEndpoint = (apiEndPoint, itemCount) => {
     };
 
     const client = axios.create({
+        baseURL: "https://adsb-api-inguy.ondigitalocean.app/api/" + apiEndPoint
                //baseURL: "https://seahorse-app-izgzv.ondigitalocean.app/api/" + apiEndPoint
-               baseURL: "http://192.168.86.58:8080/api/" + apiEndPoint
+               //baseURL: "http://192.168.86.58:8080/api/" + apiEndPoint
                //baseURL: "https://patrolx-api.onrender.com/api/" + apiEndPoint
     });
 
@@ -22,7 +23,6 @@ export const DataEndpoint = (apiEndPoint, itemCount) => {
         client.get('?limit=' + itemCount, config)
             .then((response) => {
                 setItems(response.data);
-                console.log(apiEndPoint + ":" + itemCount)
             });
             //return () => client.disconnect();
     }, []);
