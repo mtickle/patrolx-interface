@@ -113,15 +113,43 @@ function PageForm({ data }) {
     // }
   };
 
+//   {
+//     "_id": "668d705407f5ab21fd2a70b4",
+//     "icao24": "abacd2",
+//     "timestamp": "11/29/2021 19:00",
+//     "acars": "0",
+//     "adsb": "0",
+//     "built": "1/1/2002",
+//     "country": "United States",
+//     "engines": "IAE V2500SERIES",
+//     "icaoAircraftClass": "L2J",
+//     "manufacturerIcao": "AIRBUS",
+//     "manufacturerName": "Airbus",
+//     "model": "A319-131",
+//     "modes": "0",
+//     "operatorCallsign": "UNITED",
+//     "operatorIcao": "UAL",
+//     "owner": "United Airlines Inc",
+//     "regUntil": "4/30/2029",
+//     "registration": "N851UA",
+//     "serialNumber": "1664",
+//     "typecode": "A319",
+//     "vdl": "0"
+// }
 
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
 
-{/* <Form.Group controlId="_id" className="mb-3">
-  <Form.Label>Record ID</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data._id : ""} />
-</Form.Group> */}
+<Form.Group controlId="owner" className="mb-3">
+  <Form.Label>owner</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data.owner : ""} />
+</Form.Group>
+
+<Form.Group controlId="operatorCallsign" className="mb-3">
+  <Form.Label>operatorCallsign</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data.operatorCallsign : ""} />
+</Form.Group>
 
 <Form.Group controlId="manufacturerName" className="mb-3">
   <Form.Label>manufacturerName</Form.Label>
@@ -133,36 +161,6 @@ function PageForm({ data }) {
   <Form.Control readOnly defaultValue={data ? data.model : ""} />
 </Form.Group>
 
-{/* <Form.Group controlId="crimeCode" className="mb-3">
-  <Form.Label>Crime Code</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.crimeCode : ""} />
-</Form.Group>
-
-<Form.Group controlId="district" className="mb-3">
-  <Form.Label>District</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.district : ""} />
-</Form.Group>
-
-<Form.Group controlId="reportedDate" className="mb-3">
-  <Form.Label>Reported Date</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.reportedDate : ""} />
-</Form.Group>
-
-
-<Form.Group controlId="reportedTime" className="mb-3">
-  <Form.Label>Reported Time</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.reportedTime : ""} />
-</Form.Group>
-
-<Form.Group controlId="latitude" className="mb-3">
-  <Form.Label>Latitude</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.latitude : ""} />
-</Form.Group>
-
-<Form.Group controlId="longitude" className="mb-3">
-  <Form.Label>Longitude</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.longitude : ""} />
-</Form.Group> */}
 
 <Form.Group className="mb-3">
 
