@@ -13,8 +13,8 @@ export const ChartDataLibrary = (apiEndPoint, itemCount) => {
     };
 
     const client = axios.create({
-        //baseURL: "https://seahorse-app-izgzv.ondigitalocean.app/api/" + apiEndPoint
-        baseURL: "http://192.168.86.2:8080/api/" + apiEndPoint
+        baseURL: "https://sea-lion-app-sne8a.ondigitalocean.app/api/" + apiEndPoint
+       // baseURL: "http://192.168.86.2:8080/api/" + apiEndPoint
         //baseURL: "https://patrolx-api.onrender.com/api/" + apiEndPoint
     });
 

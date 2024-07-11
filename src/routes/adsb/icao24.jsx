@@ -191,8 +191,6 @@ export default function AdsbIcao24Page() {
   var recordId = new URLSearchParams(location.search).get("icao24").toLowerCase();
   var formData = AdsbDataSingleEndpoint(getOneName, recordId);
 
-  console.log(recordId)
-
   //--- don't load the page unless we have data.
   // let itemId = formData.ica024
   // if (itemId === undefined) {
@@ -202,7 +200,7 @@ export default function AdsbIcao24Page() {
   // }
 
 
-console.log(formData)
+
   //--- return the assembled page
   return (
     <React.Fragment>
