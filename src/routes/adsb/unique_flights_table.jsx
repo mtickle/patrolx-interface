@@ -44,10 +44,14 @@ function TableColumns() {
                 accessor: 'manufacturerName',
             },
             {
-                Header: 'Registration',
-                accessor: 'registration',
-            }
-            ,
+                Header: "Registration",
+                id: "",
+                accessor: "registration",
+            
+                Cell: ({ 
+                        cell: { value }, 
+                        row: { original } }) => <Link to={`https://registry.faa.gov/AircraftInquiry/Search/NNumberResult?nNumberTxt=${original.registration}`}>{value}</Link>
+            },
             {
                 Header: 'Count',
                 accessor: 'FlightCount',
@@ -61,7 +65,7 @@ function TableColumns() {
 export const UniqueFlightsDataTable = () => {
 
     //--- LOAD DATA
-    var getAllName = "getAllUniqueFlights"
+    var getAllName = "getAllUniqueAircraft"
     var tableColumns = TableColumns();
     var tableData = DataEndpoint(getAllName, 100);
 

@@ -141,9 +141,14 @@ function PageForm({ data }) {
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
 
+      <Form.Group controlId="manufacturerName" className="mb-3">
+  <Form.Label>Manufacturer</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data.manufacturerName : ""} />
+</Form.Group>
+
 <Form.Group controlId="owner" className="mb-3">
-  <Form.Label>owner</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.owner : ""} />
+  <Form.Label>Model</Form.Label>
+  <Form.Control readOnly defaultValue={data ? data.Model : ""} />
 </Form.Group>
 
 <Form.Group controlId="operatorCallsign" className="mb-3">
@@ -151,14 +156,11 @@ function PageForm({ data }) {
   <Form.Control readOnly defaultValue={data ? data.operatorCallsign : ""} />
 </Form.Group>
 
-<Form.Group controlId="manufacturerName" className="mb-3">
-  <Form.Label>manufacturerName</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.manufacturerName : ""} />
-</Form.Group>
+
 
 <Form.Group controlId="model" className="mb-3">
   <Form.Label>model</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.model : ""} />
+  <Form.Control readOnly defaultValue={data ? data.Model : ""} />
 </Form.Group>
 
 
@@ -187,7 +189,7 @@ export default function AdsbIcao24Page() {
  
 
   //--- data elements
-  var getOneName = "getAircraft"
+  var getOneName = "getUniqueAircraft"
   var recordId = new URLSearchParams(location.search).get("icao24").toLowerCase();
   var formData = AdsbDataSingleEndpoint(getOneName, recordId);
 
