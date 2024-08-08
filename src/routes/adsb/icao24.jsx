@@ -187,7 +187,7 @@ export default function AdsbIcao24Page() {
  
 
   //--- data elements
-  var getOneName = "getAircrafts"
+  var getOneName = "getAircraft"
   var recordId = new URLSearchParams(location.search).get("icao24").toLowerCase();
   var formData = AdsbDataSingleEndpoint(getOneName, recordId);
 
