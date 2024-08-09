@@ -23,7 +23,7 @@ function TableColumns() {
                 id: "",
                 accessor: "hex_code",
                 Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
-                   pathname: `/adsb/icao24`,
+                    pathname: `/adsb/icao24`,
                     search: `?icao24=${row.original.hex_code}`,
                 }}>{row.original.hex_code}</Link>)
             },
@@ -37,7 +37,7 @@ function TableColumns() {
                 //     search: `?flight=${row.original.flight}`,
                 // }}>{row.original.flight}</Link>)
             },
-           
+
             {
                 Header: 'Cat',
                 accessor: 'category',
