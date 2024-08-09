@@ -5,6 +5,7 @@ import React from 'react';
 
 // //--- CUSTOM IMPORTS: DATA TABLES
 import { PageDataTable } from './table';
+import { UniqueFlightsDataTable } from './unique_flights_table';
 
 // //--- CUSTOM IMPORTS: DATA MAP
 // import { PageDataMap } from './map';
@@ -41,6 +42,16 @@ export default function AdsbPage() {
           <PageDataMap />
         </div>
       </div>  */}
+
+<p></p>
+      <div className="card">
+        <div className="card-header">
+          Unique Flights
+        </div>
+        <div className="card-body">
+          <UniqueFlightsDataTable />
+        </div>
+      </div>
 
       <p></p>
       <div className="card">
