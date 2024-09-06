@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
 import axios from "axios";
 
+
 // //--- STANDARD IMPORTS: DATA
 import { DataEndpoint } from '../../components/data/data_endpoint';
 
 //--- STANDARD IMPORTS: MAP
+//const MapContainer = dynamic(() => import('react-leaflet'), {ssr: false})
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 
@@ -22,7 +24,7 @@ function PageMap({ data }) {
         lng: -78.65528542793695
     }
 
-    return (
+        return (
         <>
             <MapContainer
                 style={containerStyle}
@@ -53,9 +55,12 @@ function PageMap({ data }) {
                 })}
 
             </MapContainer>
+            
         </>
-    )
+        
+    );
 }
+
 
 export const PageDataMap = () => {
 

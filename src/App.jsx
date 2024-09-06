@@ -1,5 +1,4 @@
-import { useState, useLocation } from 'react'
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet, Link, ScrollRestoration } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet  } from 'react-router-dom';
 import Header from './components/layout/header'
 import Footer from './components/layout/footer';
 import HomePage from './routes/home';
