@@ -1,7 +1,6 @@
 
 
 //-- TABLE
-import React from "react";
 import { useTable, usePagination, useSortBy } from 'react-table'
 
 export default function DataTable(columns, data) {

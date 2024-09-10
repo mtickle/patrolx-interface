@@ -9,12 +9,10 @@ import IncidentPage from './routes/incidents/incident';
 import ArrestsPage from './routes/arrests';
 import ArrestPage from './routes/arrests/arrest';
 import TrafficStopsPage from './routes/traffic';
-import TrafficStopPage from './routes/traffic/stop';
 import CrashLocationsPage from './routes/crashes';
 import CrashLocationPage from './routes/crashes/crash';
 import AdsbPage from './routes/adsb';
 import GoToTop from './components/layout/gototop';
-import AdsbFlightPage from './routes/adsb/flight';
 import AdsbIcao24Page from './routes/adsb/icao24';
 
 
@@ -71,10 +69,6 @@ const router = createBrowserRouter([
         element: <TrafficStopsPage />,
       },
       {
-        path: "trafficstop/",
-        element: <TrafficStopPage />,
-      },
-      {
         path: "crashlocations/",
         element: <CrashLocationsPage />,
       },
@@ -85,10 +79,6 @@ const router = createBrowserRouter([
       {
         path: "adsb/",
         element: <AdsbPage />,
-      },
-      {
-        path: "adsb/flight",
-        element: <AdsbFlightPage />,
       },
       {
         path: "adsb/icao24",

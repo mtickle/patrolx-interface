@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Card from 'react-bootstrap/Card';
 
 export default function HomePage() {
@@ -11,7 +11,6 @@ export default function HomePage() {
 				<div className="col-lg-6 mx-auto">
 					<div className="container">
 						<div className='row'>
-
 							<div className="col-sm">
 								<Card style={{ width: '18rem' }}>
 									<Card.Img variant="top" src="https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I87_mm434.JPG&t=1684770636141" />
@@ -31,7 +30,6 @@ export default function HomePage() {
 							<div className='row'>
 								<div className="col-sm">&nbsp;</div>
 							</div>
-
 							<div className="col-sm">
 								<Card style={{ width: '18rem' }}>
 									<Card.Img variant="top" src="https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I87_LizardLickRd.JPG&t=1685969764689" />
@@ -48,17 +46,11 @@ export default function HomePage() {
 									</Card.Body>
 								</Card>
 							</div>
-
 						</div>
-
-
 					</div>
-
-
 				</div>
 			</div>
 		</div>
-
 	)
 }
 

@@ -13,9 +13,7 @@ export const DataEndpoint = (apiEndPoint, itemCount) => {
     };
 
     const client = axios.create({
-               //baseURL: "https://sea-lion-app-sne8a.ondigitalocean.app/api/" + apiEndPoint
                 baseURL: "http://192.168.86.2:8080/api/" + apiEndPoint
-               //baseURL: "https://patrolx-api.onrender.com/api/" + apiEndPoint
     });
 
     React.useEffect(() => {
@@ -24,7 +22,6 @@ export const DataEndpoint = (apiEndPoint, itemCount) => {
                 setItems(response.data);
                 console.log(apiEndPoint + ":" + itemCount)
             });
-            //return () => client.disconnect();
     }, []);
 
     return Items

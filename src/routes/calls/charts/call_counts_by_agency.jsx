@@ -1,8 +1,5 @@
-import React from "react";
-
 //--- IMPORTS: CHART ELEMENTS
 import { Bar } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
 import { ChartDataLibrary } from '../../../components/data/chart_data_library'
 
 //--- SET THE CHART SCOPE
@@ -20,7 +17,7 @@ export const CallCountsByAgencyBarChart = () => {
 
     datasets: [
       {
-        label: {chartScope},
+        label: { chartScope },
         data: chartActualData.map(item => item.AgencyCount),
         backgroundColor: ['#2a9d8f', '#e9c46a', '#f4a261', '#e76f51', '#ca6702', '#bb3e03', '#ae2012', '#9b2226'],
         borderColor: 'rgba(110, 110, 110, 0.8)',
@@ -30,7 +27,7 @@ export const CallCountsByAgencyBarChart = () => {
     ]
   }
   const chartOptions = {
-      plugins: {
+    plugins: {
       legend: {
         display: false,
         position: 'bottom',
@@ -40,9 +37,9 @@ export const CallCountsByAgencyBarChart = () => {
 
   return (
     <>
-        <h5>{chartName}</h5>
-        <Bar data={chartData} options={chartOptions} id={chartScope} />
+      <h5>{chartName}</h5>
+      <Bar data={chartData} options={chartOptions} id={chartScope} />
     </>
-);
+  );
 };
 

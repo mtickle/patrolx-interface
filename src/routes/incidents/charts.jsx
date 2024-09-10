@@ -1,4 +1,3 @@
-import React from "react";
 
 //--- CUSTOM IMPORTS: CHARTS
 import { IncidentCountsByTypeBarChart } from './charts/incident_counts_by_type';

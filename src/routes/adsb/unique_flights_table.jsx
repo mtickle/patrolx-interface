@@ -18,20 +18,11 @@ function TableColumns() {
 
     const columns = React.useMemo(
         () => [
-           
+
             {
                 Header: "Flight",
                 accessor: "Flight",
             },
-            // {
-            //     Header: "Registration",
-            //     id: "",
-            //     accessor: "registration",
-            
-            //     Cell: ({ 
-            //             cell: { value }, 
-            //             row: { original } }) => <Link to={`https://registry.faa.gov/AircraftInquiry/Search/NNumberResult?nNumberTxt=${original.registration}`}>{value}</Link>
-            // },
             {
                 Header: "Operator",
                 accessor: "operator",
@@ -56,10 +47,10 @@ function TableColumns() {
                 Header: "Registration",
                 id: "",
                 accessor: "registration",
-            
-                Cell: ({ 
-                        cell: { value }, 
-                        row: { original } }) => <Link to={`https://registry.faa.gov/AircraftInquiry/Search/NNumberResult?nNumberTxt=${original.registration}`}>{value}</Link>
+
+                Cell: ({
+                    cell: { value },
+                    row: { original } }) => <Link to={`https://registry.faa.gov/AircraftInquiry/Search/NNumberResult?nNumberTxt=${original.registration}`}>{value}</Link>
             },
             {
                 Header: 'Count',

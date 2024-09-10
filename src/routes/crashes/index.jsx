@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 //--- CUSTOM IMPORTS: CHARTS
 import { PageDataCharts } from './charts';
@@ -22,7 +22,7 @@ export default function CrashLocationsPage() {
     <div className="container-xl">
       <h1 className="display-6"><PageName /></h1>
 
-    <p></p>
+      <p></p>
       <div className="card">
         <div className="card-header">
           Charts
@@ -40,7 +40,7 @@ export default function CrashLocationsPage() {
         <div className="card-body">
           <PageDataMap />
         </div>
-      </div> 
+      </div>
 
       <p></p>
       <div className="card">

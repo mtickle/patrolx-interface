@@ -1,4 +1,3 @@
-import React from "react";
 
 //--- CUSTOM IMPORTS: CHARTS
 import { TrafficStopsCountsByDescriptionBarChart } from './charts/trafficstop_counts_by_description';

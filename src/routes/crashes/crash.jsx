@@ -1,7 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
+import React, { useRef, useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 //import { confirm } from "../components/Confirmation";
 
 //--- IMPORTS: DATA
@@ -81,11 +80,11 @@ function PageMap({ data }) {
  //--- BUILD FORM
 function PageForm({ data }) {
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const [showDeleteButton, setShowDeleteButton] = useState(false);
+  const { handleSubmit } = useForm();
+
 
   //--- HANDLE THE SUBMIT BUTTON
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     // if (record) {
     //   axios.put(`https://seahorse-app-izgzv.ondigitalocean.app/api/updateLocation/${record.id}`, data, config)
     //     .then(() => window.location.href = '/Table')
@@ -104,15 +103,6 @@ function PageForm({ data }) {
 
 
   //--- HANDLE THE DELETE BUTTON
-  const handleDelete = async () => {
-    // if (await confirm("Delete this item?")) {
-    //   if (recordId) {
-    //     axios.delete(`https://seahorse-app-izgzv.ondigitalocean.app/api/deleteLocation/${recordId}`, config)
-    //       .then(window.location.href = '/Table')
-    //       .catch((error) => console.error(error));
-    //   }
-    // }
-  };
 
 
   return (

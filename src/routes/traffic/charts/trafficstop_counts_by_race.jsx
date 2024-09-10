@@ -1,4 +1,3 @@
-import React from "react";
 import { Bar } from 'react-chartjs-2';
 import { ChartDataLibrary } from '../../../components/data/chart_data_library'
 
