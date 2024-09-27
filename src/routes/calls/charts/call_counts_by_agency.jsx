@@ -1,6 +1,7 @@
 //--- IMPORTS: CHART ELEMENTS
 import { Bar } from 'react-chartjs-2';
 import { ChartDataLibrary } from '../../../components/data/chart_data_library'
+import Chart from 'chart.js/auto';
 
 //--- SET THE CHART SCOPE
 var chartScope = "getCallCountsByAgency";

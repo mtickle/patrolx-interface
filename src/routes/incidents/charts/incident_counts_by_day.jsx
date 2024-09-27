@@ -1,6 +1,6 @@
 import { Line } from 'react-chartjs-2';
 import { ChartDataLibrary } from '../../../components/data/chart_data_library'
-
+import Chart from 'chart.js/auto';
 export const IncidentsCountsByDayLineChart = () => {
 
     var chartActualData = ChartDataLibrary("getIncidentCountsByDayOfWeek", 25);

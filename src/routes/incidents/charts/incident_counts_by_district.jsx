@@ -1,7 +1,7 @@
 
 import { Bar } from 'react-chartjs-2';
 import { ChartDataLibrary } from '../../../components/data/chart_data_library'
-
+import Chart from 'chart.js/auto';
 export const IncidentCountsByDistrictBarChart = () => {
 
   var chartActualData = ChartDataLibrary("getIncidentCountsByDistrict", 10);

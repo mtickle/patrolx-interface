@@ -25,7 +25,7 @@ export default function ArrestsPage() {
           Charts
         </div>
         <div className="card-body">
-          <PageDataCharts />
+          <PageDataCharts /> 
         </div>
       </div>
       <p></p>

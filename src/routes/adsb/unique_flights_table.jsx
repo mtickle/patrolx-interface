@@ -24,10 +24,6 @@ function TableColumns() {
                 accessor: "Flight",
             },
             {
-                Header: "Operator",
-                accessor: "operator",
-            },
-            {
                 Header: 'ICAO24',
                 accessor: 'HexCode',
             },
