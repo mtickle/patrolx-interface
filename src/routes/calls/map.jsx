@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 
-
 // //--- STANDARD IMPORTS: DATA
 import { DataEndpoint } from '../../components/data/data_endpoint';
 
@@ -42,6 +41,8 @@ function PageMap({ data }) {
                         lat: Number(item.latitude.trim()),
                         lng: Number(item.longitude.trim())
                     };
+
+                    console.log(position)
 
                     return <Marker key={index} position={position}>
                         <Popup>

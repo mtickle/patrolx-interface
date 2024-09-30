@@ -39,14 +39,18 @@ function TableColumns() {
                 accessor: 'arrestingAgency',
             },
             {
-                Header: "",
-                id: "",
-                accessor: "_id",
-                Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
-                    pathname: `/arrest`,
-                    search: `?id=${row.original._id}`,
-                }}>View</Link>)
-            }
+                Header: 'Location',
+                accessor: 'arrestLocation',
+            },
+            // {
+            //     Header: "",
+            //     id: "",
+            //     accessor: "_id",
+            //     Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
+            //         pathname: `/arrest`,
+            //         search: `?id=${row.original._id}`,
+            //     }}>View</Link>)
+            // }
         ],
         []
     )
