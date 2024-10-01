@@ -38,10 +38,10 @@ function TableColumns() {
                 Header: 'Agency',
                 accessor: 'arrestingAgency',
             },
-            {
-                Header: 'Location',
-                accessor: 'arrestLocation',
-            },
+            // {
+            //     Header: 'Location',
+            //     accessor: 'arrestLocation',
+            // },
             // {
             //     Header: "",
             //     id: "",

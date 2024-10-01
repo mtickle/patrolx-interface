@@ -1,18 +1,5 @@
 import { useRef } from 'react';
 
-import {
-    setKey,
-    setDefaults,
-    setLanguage,
-    setRegion,
-    fromAddress,
-    fromLatLng,
-    fromPlaceId,
-    setLocationType,
-    geocode,
-    RequestType,
-} from "react-geocode";
-
 // //--- STANDARD IMPORTS: DATA
 import { DataEndpoint } from '../../components/data/data_endpoint';
 
@@ -23,11 +10,6 @@ import "leaflet/dist/leaflet.css"
 
 //--- BUILD MAP
 function PageMap({ data }) {
-
-    setDefaults({
-        key: "AIzaSyAtjQtyzdW0u7SEdeKCL6623uO3RoUS30E", // Your API key here.
-        language: "en", // Default language for responses.
-    });
 
     const mapRef = useRef();
     const zoom = 11;
@@ -40,7 +22,7 @@ function PageMap({ data }) {
         lng: -78.65528542793695
     }
 
-    return (
+        return (
         <>
             <MapContainer
                 style={containerStyle}
@@ -48,7 +30,6 @@ function PageMap({ data }) {
                 zoom={zoom}
                 scrollWheelZoom={false}
                 ref={mapRef}
-                id="map"
             >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -56,50 +37,27 @@ function PageMap({ data }) {
                 />
 
                 {data.map((item, index) => {
+                    let position = {
+                        lat: Number(item.arrestLat.trim()),
+                        lng: Number(item.arrestLng.trim())
+                    };
 
-                    fromAddress(item.arrestLocation)
-                        .then(({ results }) => {
-                            const { lat, lng } = results[0].geometry.location;
-                            let position = {
-                                lat: lat,
-                                lng: lng
-                            };
+                    console.log(position)
 
-                           return(position);
-                            // var Popup = L.popup()
-                            // .setLatLng(lat, lng)
-                            // .setContent("I am a standalone popup.")
-                            // .openOn(map);
-
-                            //marker = L.marker([lat, lng]).addTo(map);
-
-                         
-                           
-                        //    console.log(position)
-                        //     return <Marker key={index} position={position}>
-                        //         <Popup>
-                        //             {item.arrestLocation}<br />
-                        //         </Popup>
-                        //     </Marker>
-
-                        })
-                        .catch(console.error);
-                        
-                        console.log(fromAddress(item.arrestLocation))
-                     
-
-
+                    return <Marker key={index} position={position}>
+                        <Popup>
+                            {item.name} at {item.dateOfArrest} <br />
+                            {item.arrestingAgency}<br />
+                            {item.charge}<br />
+                            {item.arrestLocation}<br />
+                        </Popup>
+                    </Marker>
                 })}
 
-
-                        <Marker key={0} position={center}>
-                                <Popup>
-                                    {center}<br />
-                                </Popup>
-                            </Marker>
-
             </MapContainer>
+            
         </>
+        
     );
 }
 
