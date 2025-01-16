@@ -20,19 +20,19 @@ function TableColumns() {
         () => [
             {
                 Header: 'Date',
-                accessor: 'reportedDate',
+                accessor: 'reporteddate',
             },
             {
                 Header: 'Time',
-                accessor: 'reportedTime',
+                accessor: 'reportedtime',
             },
             {
                 Header: 'Crime Code',
-                accessor: 'crimeCode',
+                accessor: 'crimecode',
             },
             {
                 Header: 'Description',
-                accessor: 'crimeDescription',
+                accessor: 'crimedescription',
             },
             {
                 Header: 'District',

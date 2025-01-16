@@ -13,14 +13,17 @@ export const DataEndpoint = (apiEndPoint, itemCount) => {
     };
 
     const client = axios.create({
-                baseURL: "http://192.168.86.2:8080/api/" + apiEndPoint
+                //baseURL: "http://192.168.86.2:8080/api/" + apiEndPoint
+                baseURL: "http://localhost:8080/api/" + apiEndPoint
     });
+
+    console.log("DataEndpoint: " + apiEndPoint + ":" + itemCount)
 
     React.useEffect(() => {
         client.get('?limit=' + itemCount, config)
             .then((response) => {
                 setItems(response.data);
-                console.log(apiEndPoint + ":" + itemCount)
+                console.log(response.data)
             });
     }, []);
 
