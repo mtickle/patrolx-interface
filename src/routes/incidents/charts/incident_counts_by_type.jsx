@@ -1,16 +1,17 @@
 import { Bar } from 'react-chartjs-2';
 import { ChartDataLibrary } from '../../../components/data/chart_data_library'
 import Chart from 'chart.js/auto';
+import { act } from 'react';
 export const IncidentCountsByTypeBarChart = () => {
 
-  var chartActualData = ChartDataLibrary("getIncidentCountsByType", 10);
+  var chartActualData = ChartDataLibrary("getincidentcountsbytype", 10);
 
   const chartData = {
-    labels: chartActualData.map(item => item._id),
+    labels: chartActualData.map(item => item.item),
     datasets: [
       {
         label: 'Incidents',
-        data: chartActualData.map(item => item.IncidentCount),
+        data: chartActualData.map(item => item.itemcount),
         backgroundColor: ['#2a9d8f', '#e9c46a', '#f4a261', '#e76f51', '#ca6702', '#bb3e03', '#ae2012', '#9b2226'],
         borderColor: 'rgba(110, 110, 110, 0.8)',
         borderWidth: 1,
