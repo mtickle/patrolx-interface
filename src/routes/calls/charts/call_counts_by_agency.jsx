@@ -14,12 +14,12 @@ export const CallCountsByAgencyBarChart = () => {
 
   const chartData = {
 
-    labels: chartActualData.map(item => item._id.replace("Department", "").replace("Dept", "")),
+    labels: chartActualData.map(item => item.item.replace("Department", "").replace("Dept", "")),
 
     datasets: [
       {
         label: { chartScope },
-        data: chartActualData.map(item => item.AgencyCount),
+        data: chartActualData.map(item => item.itemcount),
         backgroundColor: ['#2a9d8f', '#e9c46a', '#f4a261', '#e76f51', '#ca6702', '#bb3e03', '#ae2012', '#9b2226'],
         borderColor: 'rgba(110, 110, 110, 0.8)',
         borderWidth: 1,

@@ -14,11 +14,11 @@ export const CallCountsByHourLineChart = () => {
     var chartActualData = ChartDataLibrary(chartScope, 25);
 
     const chartData = {
-        labels: chartActualData.map(item => item._id),
+        labels: chartActualData.map(item => item.item),
         datasets: [
             {
                 label: { chartScope },
-                data: chartActualData.map(item => item.HourCount),
+                data: chartActualData.map(item => item.itemcount),
                 borderColor: 'rgba(110, 110, 110, 0.8)',
                 borderWidth: 1,
                 backgroundColor: [
