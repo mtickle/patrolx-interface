@@ -19,15 +19,15 @@ function TableColumns() {
         () => [
             {
                 Header: 'Date',
-                accessor: 'dateOfStop',
+                accessor: 'dateofstop',
             },
             {
                 Header: 'Time',
-                accessor: 'timeOfStop',
+                accessor: 'timeofstop',
             },
             {
                 Header: 'Violation',
-                accessor: 'violationType',
+                accessor: 'violationtype',
             },
             {
                 Header: 'Description',

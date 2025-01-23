@@ -66,9 +66,9 @@ function PageMap({ data }) {
 
         <Marker key={data._id} position={position}>
           <Popup>
-            {data.callDate} at {data.callTime}<br />
+            {data.calldate} at {data.calltime}<br />
             {data.agency}<br />
-            {data.incidentType}<br />
+            {data.incident}<br />
             {data.location}<br />
           </Popup>
         </Marker>
@@ -173,14 +173,16 @@ export default function CallPage() {
   var recordId = new URLSearchParams(location.search).get("id");
   var formData = DataSingleEndpoint(getOneName, recordId);
 
-  console.log(formData)
+  //console.log(formData)
 
   //--- don't load the page unless we have data.
-  let itemId = formData._id
+  let itemId = formData.incident;
+  console.log("formData: ", formData)
+  console.log("itemId: ", itemId) 
   if (itemId === undefined) {
     return;
   } else {
-    console.log(itemId.length)
+    console.log("what you did??")
   }
 
   //--- return the assembled page

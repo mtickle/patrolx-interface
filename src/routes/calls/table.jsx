@@ -21,11 +21,11 @@ function TableColumns() {
             {
                 id: "callDate",
                 Header: 'Date',
-                accessor: 'callDate',
+                accessor: 'calldate',
             },
             {
                 Header: 'Time',
-                accessor: 'callTime',
+                accessor: 'calltime',
             },
             {
                 Header: 'Responding Agency',
@@ -33,21 +33,21 @@ function TableColumns() {
             },
             {
                 Header: 'Incident',
-                accessor: 'incidentType',
+                accessor: 'incident',
             },
             {
                 Header: 'Location',
                 accessor: 'location',
             },
-            {
-                Header: "",
-                id: "",
-                accessor: "_id",
-                Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
-                    pathname: `/call`,
-                    search: `?id=${row.original._id}`,
-                }}>View</Link>)
-            }
+            // {
+            //     Header: "",
+            //     id: "",
+            //     accessor: "_id",
+            //     Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
+            //         pathname: `/call`,
+            //         search: `?id=${row.original.callid}`,
+            //     }}>View</Link>)
+            // }
         ],
         []
     )

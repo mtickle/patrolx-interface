@@ -43,10 +43,10 @@ function PageMap({ data }) {
 
                     return <Marker key={index} position={position}>
                         <Popup>
-                            {item.dateOfStop} at {item.timeOfStop}<br />
+                            {item.dateofstop} at {item.timeofstop}<br />
                             {item.description}<br />
-                            {item.violationType}<br />
-                            {item.make} {item.model}
+                            {item.violationtype}<br />
+                            {item.year} {item.make} {item.model}
                         </Popup>
                     </Marker>
                 })}

@@ -43,9 +43,9 @@ function PageMap({ data }) {
 
                     return <Marker key={index} position={position}>
                         <Popup>
-                            {item.reportedDate} at {item.reportedTime}<br />
-                            {item.crimeDescription}<br />
-                            {item.reportedBlockAddress}<br />
+                            {item.reporteddate} at {item.reportedtime}<br />
+                            {item.crimedescription}<br />
+                            {item.reportedblockaddress}<br />
                             {item.district}<br />
                         </Popup>
                     </Marker>

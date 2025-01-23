@@ -3,8 +3,9 @@
 //--- CUSTOM IMPORTS: CHARTS
 import { CallCountsByAgencyBarChart } from './charts/call_counts_by_agency';
 import { CallCountsByIncidentBarChart } from './charts/call_counts_by_incident';
-import { CallCountsByEmdCodeBarChart } from './charts/call_counts_by_emd_code';
+//import { CallCountsByEmdCodeBarChart } from './charts/call_counts_by_emd_code';
 import { CallCountsByHourLineChart } from './charts/call_counts_by_hour';
+import { CallCountsByDayBarChart } from './charts/call_counts_by_day';
 
 export const PageDataCharts = () => {
     return (
@@ -20,7 +21,7 @@ export const PageDataCharts = () => {
                 </div>
                 <div className="row">
                     <div className="col-md">
-                        <CallCountsByEmdCodeBarChart />
+                        <CallCountsByDayBarChart />
                     </div>
                     <div className="col-md">
                         <CallCountsByHourLineChart />

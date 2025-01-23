@@ -38,15 +38,15 @@ function TableColumns() {
                 Header: 'District',
                 accessor: 'district',
             },
-            {
-                Header: "",
-                id: "",
-                accessor: "_id",
-                Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
-                    pathname: `/incident`,
-                    search: `?id=${row.original._id}`,
-                }}>View</Link>)
-            }
+            // {
+            //     Header: "",
+            //     id: "",
+            //     accessor: "_id",
+            //     Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
+            //         pathname: `/incident`,
+            //         search: `?id=${row.original.callid}`,
+            //     }}>View</Link>)
+            // }
         ],
         []
     )
