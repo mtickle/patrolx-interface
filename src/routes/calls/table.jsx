@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 //--- STANDARD IMPORTS: DATA
 import { DataEndpoint } from '../../components/data/data_endpoint';
@@ -22,6 +23,11 @@ function TableColumns() {
                 id: "callDate",
                 Header: 'Date',
                 accessor: 'calldate',
+                accessor: d => {
+                    return moment(d.calldate)
+                        .local()
+                        .format("YYYY-MM-DD")
+                }
             },
             {
                 Header: 'Time',

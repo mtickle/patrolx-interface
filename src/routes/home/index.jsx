@@ -3,6 +3,8 @@
 
 import { TrafficCameras } from './cameras';
 import { Weather } from './weather';
+import { WeatherChart } from './charts/weather_chart';
+import { WeatherDetails } from './charts/weather_details';
 
 //--- SET PAGE NAME
 function PageName() {
@@ -32,19 +34,22 @@ export default function HomePage() {
 					Weather
 				</div>
 				<div className="card-body">
-					<Weather />
+					{/* <Weather /> */}
+				</div>
+				<div className="card-body">
+					<WeatherDetails />
 				</div>
 			</div>
 
-			<p></p>
+			{/* <p></p>
 			<div className="card">
 				<div className="card-header">
 					Data
 				</div>
 				<div className="card-body">
-					{/* <PageDataTable /> */}
+					
 				</div>
-			</div>
+			</div> */}
 		</div>
 
 	)

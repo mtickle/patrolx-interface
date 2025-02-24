@@ -1,5 +1,6 @@
 
 import React from "react";
+import moment from "moment";
 
 //--- STANDARD IMPORTS: DATA
 import { DataEndpoint } from '../../components/data/data_endpoint';
@@ -19,7 +20,11 @@ function TableColumns() {
         () => [
             {
                 Header: 'Date',
-                accessor: 'dateofstop',
+                accessor: d => {
+                    return moment(d.dateofstop)
+                        .local()
+                        .format("YYYY-MM-DD")
+                }
             },
             {
                 Header: 'Time',

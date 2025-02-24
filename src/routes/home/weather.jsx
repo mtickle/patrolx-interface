@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
+import Card from 'react-bootstrap/Card';
+
 
 export const Weather = () => {
 
-    const API_KEY = "afd91300c7c073a148d3fb8141297070";
-    const WEATHER_CITY = "raleigh";
-    const [searchInput, setSearchInput] = useState("");
+  const API_KEY = "afd91300c7c073a148d3fb8141297070";
+  const WEATHER_CITY = "raleigh";
+  const [searchInput, setSearchInput] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState(WEATHER_CITY);
   const [forecast, setForecast] = useState([]);
   const [error, setError] = useState(null);
- 
+
   const [loading, setLoading] = useState(false);
 
   const fetchWeatherData = async (cityName) => {
@@ -60,48 +62,51 @@ export const Weather = () => {
 
       {error && <p className="error">{error}</p>}
 
-{weatherData && weatherData.main && weatherData.weather && (
-  <>
-    <div className="header">
-      <p className="temperature">{weatherData.main.temp}°F</p>
-      <p className="condition">{weatherData.weather[0].main}</p>
-    </div>
-    <div className="weather-details">
-      <div >
-        <p >Humidity</p>
-        <p style={{fontWeight:"bold"}}>{Math.round(weatherData.main.humidity)}%</p>
-      </div>
-      <div>
-        <p>Wind Speed</p>
-        <p style={{fontWeight:"bold"}}>{Math.round(weatherData.wind.speed)} mph</p>
-      </div>
-    </div>
-  </>
-)}
+      {weatherData && weatherData.main && weatherData.weather && (
+        <>
 
-{forecast.length > 0 && (
-  <>
-    <div className="forecast">
-      <h2 className="forecast-header">5-Day Forecast</h2>
-      <div className="forecast-days">
-        {forecast.map((day, index) => (
-          <div key={index} className="forecast-day">
-            <p>
-              {new Date(day.dt * 1000).toLocaleDateString("en-US", {
-                weekday: "short",
-              })}
-            </p>
-            <img
-              src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
-              alt={day.weather[0].description}
-            />
-            <p>{Math.round(day.main.temp)}°F</p>
+          <div className='row'>
+            <div className="col-sm">
+              <Card style={{ width: '18rem' }}>
+                {/* <Card.Img variant="top" src="https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I40_US70.jpg&t=1739970403174" /> */}
+                <Card.Body>
+
+                  Currently {weatherData.main.temp}°F and {weatherData.weather[0].main}<br></br>
+                  Humidity {Math.round(weatherData.main.humidity)}%<br></br>
+                  Wind Speed {Math.round(weatherData.wind.speed)} mph
+                  
+                </Card.Body>
+              </Card>
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </>
-)}
+         
+          
+        </>
+      )}
+
+      {/* {forecast.length > 0 && (
+        <>
+          <div className="forecast">
+            <h2 className="forecast-header">5-Day Forecast</h2>
+            <div className="forecast-days">
+              {forecast.map((day, index) => (
+                <div key={index} className="forecast-day">
+                  <p>
+                    {new Date(day.dt * 1000).toLocaleDateString("en-US", {
+                      weekday: "short",
+                    })}
+                  </p>
+                  <img
+                    src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                    alt={day.weather[0].description}
+                  />
+                  <p>{Math.round(day.main.temp)}°F</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )} */}
     </div>
   );
 };

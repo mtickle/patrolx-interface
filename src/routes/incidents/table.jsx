@@ -1,5 +1,6 @@
 
 import React from "react";
+import moment from "moment";
 import { Link } from "react-router-dom";
 
 //--- STANDARD IMPORTS: DATA
@@ -20,7 +21,11 @@ function TableColumns() {
         () => [
             {
                 Header: 'Date',
-                accessor: 'reporteddate',
+                accessor: d => {
+                    return moment(d.reporteddate)
+                        .local()
+                        .format("YYYY-MM-DD")
+                }
             },
             {
                 Header: 'Time',
