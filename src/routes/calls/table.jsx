@@ -31,19 +31,19 @@ function TableColumns() {
             },
             {
                 Header: 'Time',
-                accessor: 'calltime',
+                accessor: 'call_time',
             },
             {
                 Header: 'Responding Agency',
-                accessor: 'agency',
+                accessor: 'call_agency',
             },
             {
                 Header: 'Incident',
-                accessor: 'incident',
+                accessor: 'call_type',
             },
             {
                 Header: 'Location',
-                accessor: 'location',
+                accessor: 'call_address',
             },
             // {
             //     Header: "",

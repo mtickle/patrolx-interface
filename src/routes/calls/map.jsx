@@ -38,18 +38,18 @@ function PageMap({ data }) {
 
                 {data.map((item, index) => {
                     let position = {
-                        lat: Number(item.latitude.trim()),
-                        lng: Number(item.longitude.trim())
+                        lat: Number(item.call_latitude.trim()),
+                        lng: Number(item.call_longitude.trim())
                     };
 
                     console.log(position)
 
                     return <Marker key={index} position={position}>
                         <Popup>
-                            {item.calldate} at {item.calltime}<br />
-                            {item.agency}<br />
-                            {item.incident}<br />
-                            {item.location}<br />
+                            {item.call_date} at {item.call_time}<br />
+                            {item.call_agency}<br />
+                            {item.call_type}<br />
+                            {item.call_address}<br />
                         </Popup>
                     </Marker>
                 })}
