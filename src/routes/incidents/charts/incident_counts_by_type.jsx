@@ -30,7 +30,7 @@ export const IncidentCountsByTypeBarChart = () => {
 
   return (
     <>
-      <h5>Incidents By Type</h5>
+      <h5>Incident Types</h5>
       <Bar data={chartData} options={chartOptions} />
     </>
   );

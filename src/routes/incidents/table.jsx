@@ -29,19 +29,19 @@ function TableColumns() {
             },
             {
                 Header: 'Time',
-                accessor: 'reportedtime',
+                accessor: 'incident_time',
             },
             {
                 Header: 'Crime Code',
-                accessor: 'crimecode',
+                accessor: 'incident_crimecode',
             },
             {
                 Header: 'Description',
-                accessor: 'crimedescription',
+                accessor: 'incident_type',
             },
             {
                 Header: 'District',
-                accessor: 'district',
+                accessor: 'incident_district',
             },
             // {
             //     Header: "",

@@ -3,7 +3,7 @@
 import { IncidentCountsByTypeBarChart } from './charts/incident_counts_by_type';
 import { IncidentCountsByDistrictBarChart } from './charts/incident_counts_by_district';
 import { IncidentsCountsByHourLineChart } from './charts/incident_counts_by_hour';
-import { IncidentsCountsByDayLineChart } from './charts/incident_counts_by_day';
+import { IncidentCountsByDayBarChart } from './charts/incident_counts_by_day';
 
 export const PageDataCharts = () => {
     return (
@@ -11,18 +11,18 @@ export const PageDataCharts = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md">
-                        <IncidentCountsByTypeBarChart />
+                        <IncidentCountsByDistrictBarChart />
                     </div>
                     <div className="col-md">
-                        <IncidentCountsByDistrictBarChart />
+                        <IncidentCountsByTypeBarChart />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md">
-                        <IncidentsCountsByHourLineChart />
+                        <IncidentCountsByDayBarChart />
                     </div>
                     <div className="col-md">
-                        <IncidentsCountsByDayLineChart />
+                        <IncidentsCountsByHourLineChart />
                     </div>
                 </div>
             </div>

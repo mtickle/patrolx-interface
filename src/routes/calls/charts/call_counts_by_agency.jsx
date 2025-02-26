@@ -5,7 +5,7 @@ import Chart from 'chart.js/auto';
 
 //--- SET THE CHART SCOPE
 var chartScope = "getCallCountsByAgency";
-var chartName = "Calls by Responding Agency";
+var chartName = "Responding Agency";
 
 //--- BUILD CHART ELEMENT
 export const CallCountsByAgencyBarChart = () => {

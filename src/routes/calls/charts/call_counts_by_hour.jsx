@@ -6,7 +6,7 @@ import { ChartDataLibrary } from '../../../components/data/chart_data_library'
 import Chart from 'chart.js/auto';
 //--- SET THE CHART SCOPE
 var chartScope = "getCallCountsByHour";
-var chartName = "Calls by Hour of Day";
+var chartName = "Calls by Hour";
 
 //--- BUILD CHART ELEMENT
 export const CallCountsByHourLineChart = () => {

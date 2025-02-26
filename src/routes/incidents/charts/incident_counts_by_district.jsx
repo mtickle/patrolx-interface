@@ -7,7 +7,7 @@ export const IncidentCountsByDistrictBarChart = () => {
   var chartActualData = ChartDataLibrary("getIncidentCountsByDistrict", 10);
 
   const chartData = {
-    labels: chartActualData.map(item => item.item),
+    labels: chartActualData.map(item => item.itemname),
     datasets: [
       {
         label: 'Incidents', 
@@ -30,7 +30,7 @@ export const IncidentCountsByDistrictBarChart = () => {
 
   return (
     <>
-      <h5>Incidents By District</h5>
+      <h5>Districts</h5>
       <Bar data={chartData} options={chartOptions} />
     </>
   );
