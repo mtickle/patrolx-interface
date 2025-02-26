@@ -21,22 +21,22 @@ function TableColumns() {
             {
                 Header: 'Date',
                 accessor: d => {
-                    return moment(d.dateofstop)
+                    return moment(d.traffic_dateofstop)
                         .local()
                         .format("YYYY-MM-DD")
                 }
             },
             {
                 Header: 'Time',
-                accessor: 'timeofstop',
+                accessor: 'traffic_timeofstop',
             },
             {
                 Header: 'Violation',
-                accessor: 'violationtype',
+                accessor: 'traffic_violationtype',
             },
             {
                 Header: 'Description',
-                accessor: 'description',
+                accessor: 'traffic_description',
             }
         ],
         []

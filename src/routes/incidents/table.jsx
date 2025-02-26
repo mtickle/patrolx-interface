@@ -22,7 +22,7 @@ function TableColumns() {
             {
                 Header: 'Date',
                 accessor: d => {
-                    return moment(d.reporteddate)
+                    return moment(d.incident_date)
                         .local()
                         .format("YYYY-MM-DD")
                 }

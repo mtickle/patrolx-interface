@@ -19,10 +19,10 @@ export const CallCountsByHourLineChart = () => {
             {
                 label: { chartScope },
                 data: chartActualData.map(item => item.itemcount),
-                borderColor: 'rgba(110, 110, 110, 0.8)',
+                borderColor: 'rgba(0, 0, 0, 0.8)',
                 borderWidth: 1,
                 backgroundColor: [
-                    'rgba(64, 122, 255, 0.8)',
+                    '#0766D1',
                 ],
             },
         ]

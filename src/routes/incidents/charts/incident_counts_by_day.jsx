@@ -14,7 +14,7 @@ var chartName = "Incidents by Day";
 //--- BUILD CHART ELEMENT
 export const IncidentCountsByDayBarChart = () => {
 
-  var chartActualData = ChartDataLibrary(chartScope, 10);
+  var chartActualData = ChartDataLibrary(chartScope, 8);
 
   const chartData = {
     labels: chartActualData.map(item => item.itemname),
@@ -22,8 +22,8 @@ export const IncidentCountsByDayBarChart = () => {
       {
         label: { chartScope },
         data: chartActualData.map(item => item.itemcount),
-        backgroundColor: ['#2a9d8f', '#e9c46a', '#f4a261', '#e76f51', '#ca6702', '#bb3e03', '#ae2012', '#9b2226'],
-        borderColor: 'rgba(51, 0, 213, 1)',
+        backgroundColor: ['#0766D1'],
+        borderColor: 'rgb(0, 0, 0)',
         borderWidth: 1,
         indexAxis: 'y',
       },

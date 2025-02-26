@@ -22,9 +22,8 @@ function TableColumns() {
             {
                 id: "callDate",
                 Header: 'Date',
-                accessor: 'calldate',
                 accessor: d => {
-                    return moment(d.calldate)
+                    return moment(d.call_date)
                         .local()
                         .format("YYYY-MM-DD")
                 }

@@ -6,13 +6,13 @@ export const TrafficStopsCountsByRaceBarChart = () => {
     var chartActualData = ChartDataLibrary("getTrafficStopRaceCounts", 10);
 
     const chartData = {
-        labels: chartActualData.map(item => item.item),
+        labels: chartActualData.map(item => item.itemname),
     datasets: [
       {
         label: 'Incidents', 
         data: chartActualData.map(item => item.itemcount), 
-        backgroundColor: ['#2a9d8f', '#e9c46a', '#f4a261', '#e76f51','#ca6702','#bb3e03','#ae2012','#9b2226'],
-        borderColor: 'rgba(110, 110, 110, 0.8)',
+        backgroundColor: ['#0766D1'],
+        borderColor: 'rgba(0, 0, 0, 0.8)',
         borderWidth: 1,
         indexAxis: 'y',
       },
@@ -29,7 +29,7 @@ export const TrafficStopsCountsByRaceBarChart = () => {
 
     return (
         <>
-            <h5>Traffic Stops by Race</h5>
+            <h5>Race</h5>
             <Bar data={chartData} options={chartOptions} />
         </>
     );

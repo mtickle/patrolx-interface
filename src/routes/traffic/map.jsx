@@ -37,16 +37,16 @@ function PageMap({ data }) {
 
                 {data.map((item, index) => {
                     let position = {
-                        lat: Number(item.latitude.trim()),
-                        lng: Number(item.longitude.trim())
+                        lat: Number(item.traffic_latitude.trim()),
+                        lng: Number(item.traffic_longitude.trim())
                     };
 
                     return <Marker key={index} position={position}>
                         <Popup>
-                            {item.dateofstop} at {item.timeofstop}<br />
-                            {item.description}<br />
-                            {item.violationtype}<br />
-                            {item.year} {item.make} {item.model}
+                            {item.traffic_dateofstop} at {item.traffic_timeofstop}<br />
+                            {item.traffic_description}<br />
+                            {item.traffic_violationtype}<br />
+                            {item.traffic_year} {item.traffic_make} {item.traffic_model}
                         </Popup>
                     </Marker>
                 })}

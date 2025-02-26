@@ -13,7 +13,7 @@ export const IncidentsCountsByHourLineChart = () => {
                 data: chartActualData.map(item => item.itemcount),
                 borderColor: 'rgba(110, 110, 110, 0.8)',
                 borderWidth: 1,
-                backgroundColor: ['#2a9d8f', '#e9c46a', '#f4a261', '#e76f51', '#ca6702', '#bb3e03', '#ae2012', '#9b2226'],
+                backgroundColor: ['#0766D1'],
             },
         ]
     }
@@ -28,7 +28,7 @@ export const IncidentsCountsByHourLineChart = () => {
 
     return (
         <>
-            <h5>Incidents by Hour of Day</h5>
+            <h5>Incidents by Hour</h5>
             <Line data={chartData} options={chartOptions} />
         </>
     );
