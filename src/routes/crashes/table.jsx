@@ -1,5 +1,6 @@
 
 import React from "react";
+import moment from "moment";
 
 //--- STANDARD IMPORTS: DATA
 import { DataEndpoint } from '../../components/data/data_endpoint';
@@ -18,24 +19,25 @@ function TableColumns() {
     const columns = React.useMemo(
         () => [
             {
+                id: "crashDate",
                 Header: 'Date',
-                accessor: 'dateOfCrash',
+                accessor: d => {
+                    return moment(d.crash_date)
+                        .local()
+                        .format("YYYY-MM-DD")
+                }
             },
             {
                 Header: 'Time',
-                accessor: 'timeOfCrash',
+                accessor: 'crash_time',
             },
             {
                 Header: 'Road Name',
-                accessor: 'locationRoadName',
-            },
-            {
-                Header: 'Cross Street',
-                accessor: 'locationRoadNameAt',
+                accessor: 'crash_locationroadname',
             },
             {
                 Header: 'Crash Event',
-                accessor: 'mostHarmfulEvent',
+                accessor: 'crash_mostharmfulevent',
             }
         ],
         []
@@ -46,7 +48,7 @@ function TableColumns() {
 export const PageDataTable = () => {
 
     //--- LOAD DATA
-    var getAllName = "getAllCrashLocations"
+    var getAllName = "getAllCrashes"
     var tableColumns = TableColumns();
     var tableData = DataEndpoint(getAllName, 100);
 

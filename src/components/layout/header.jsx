@@ -16,7 +16,7 @@ export default function Header() {
                         <Nav.Link href="/Calls">Calls</Nav.Link>
                         <Nav.Link href="/Incidents">Incidents</Nav.Link>
                         <Nav.Link href="/TrafficStops">Traffic Stops</Nav.Link>
-                        {/* <Nav.Link href="/CrashLocations">Crash Locations</Nav.Link> */}
+                        <Nav.Link href="/CrashLocations">Crash Locations</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 

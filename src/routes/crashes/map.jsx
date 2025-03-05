@@ -37,16 +37,15 @@ function PageMap({ data }) {
 
                 {data.map((item, index) => {
                     let position = {
-                        lat: Number(item.locationLatitude.trim()),
-                        lng: Number(item.locationLongitude.trim())
+                        lat: Number(item.crash_latitude.trim()),
+                        lng: Number(item.crash_longitude.trim())
                     };
 
                     return <Marker key={index} position={position}>
                         <Popup>
-                            {item.dateOfCrash} at {item.timeOfCrash}<br />
-                            {item.locationRoadName}<br />
-                            {item.firstHarmfulEvent}<br />
-                            {item.locationRelationToRoad}<br />
+                            {item.crash_date} at {item.crash_time}<br />
+                            {item.crash_locationroadname}<br />
+                            {item.crash_mostharmfulevent}<br />
                         </Popup>
                     </Marker>
                 })}
@@ -59,7 +58,7 @@ function PageMap({ data }) {
 export const PageDataMap = () => {
 
     //--- LOAD DATA
-    var getAllName = "getAllCrashLocations"
+    var getAllName = "getAllCrashes"
     var mapData = DataEndpoint(getAllName, 20);
 
     return (
