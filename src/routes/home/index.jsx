@@ -2,6 +2,7 @@
 
 
 import { TrafficCameras } from './cameras';
+import { ActiveCalls } from './active_calls';
 import { Weather } from './weather';
 import { WeatherChart } from './charts/weather_chart';
 import { WeatherDetails } from './charts/weather_details';
@@ -29,6 +30,17 @@ export default function HomePage() {
 			</div>
 
 			<p></p>
+
+			<div className="card">
+				<div className="card-header">
+					Active Calls
+				</div>
+				<div className="card-body">
+					<ActiveCalls />
+				</div>
+			</div>
+
+			<p></p>
 			<div className="card">
 				<div className="card-header">
 					Weather
@@ -37,7 +49,7 @@ export default function HomePage() {
 					{/* <Weather /> */}
 				</div>
 				<div className="card-body">
-					<WeatherDetails />
+					{/* <WeatherDetails /> */}
 				</div>
 			</div>
 
