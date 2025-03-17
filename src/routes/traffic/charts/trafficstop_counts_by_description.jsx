@@ -15,6 +15,7 @@ export const TrafficStopsCountsByDescriptionBarChart = () => {
         borderColor: 'rgba(0, 0, 0, 0.8)',
         borderWidth: 1,
         indexAxis: 'y',
+
       },
     ]
   }
@@ -31,7 +32,7 @@ export const TrafficStopsCountsByDescriptionBarChart = () => {
 
   return (
     <>
-      <h5>Traffic Stops Types</h5>
+      <h5>Traffic Stop Types</h5>     
       <Bar data={chartData} options={chartOptions} />
     </>
   );

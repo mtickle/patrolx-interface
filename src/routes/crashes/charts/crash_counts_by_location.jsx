@@ -3,7 +3,7 @@ import { ChartDataLibrary } from '../../../components/data/chart_data_library'
 import Chart from 'chart.js/auto';
 export const CrashCountsByLocationBarChart = () => {
 
-    var chartActualData = ChartDataLibrary("getCrashLocationCounts", 10);
+    var chartActualData = ChartDataLibrary("getCrashesByLocation", 10);
 
     const chartData = {
         labels: chartActualData.map(item => item.itemname),

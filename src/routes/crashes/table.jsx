@@ -36,8 +36,16 @@ function TableColumns() {
                 accessor: 'crash_locationroadname',
             },
             {
+                Header: 'City',
+                accessor: 'crash_locationcity',
+            },
+            {
                 Header: 'Crash Event',
                 accessor: 'crash_mostharmfulevent',
+            },
+            {
+                Header: 'Drivers',
+                accessor: 'crash_drivers',
             }
         ],
         []
