@@ -13,8 +13,8 @@ export const DataEndpoint = (apiEndPoint, itemCount) => {
     };
 
     const client = axios.create({
-                baseURL: "http://192.168.86.2:8080/api/" + apiEndPoint
-                //baseURL: "http://localhost:8080/api/" + apiEndPoint
+                //baseURL: "http://192.168.86.2:8080/api/" + apiEndPoint
+                baseURL: "http://localhost:8080/api/" + apiEndPoint
     });
 
     console.log("DataEndpoint: " + apiEndPoint + ":" + itemCount)
