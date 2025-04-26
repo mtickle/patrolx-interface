@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react-swc'
 // okay this is a trick
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '',
   esbuild: {
     loader: "jsx",
     include: [
