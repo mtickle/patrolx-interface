@@ -24,7 +24,7 @@ const App = () => {
       <Route path="incidents" element={<IncidentsPage />} />
       <Route path="trafficstops" element={<TrafficStopsPage />} />
       <Route path="crashlocations" element={<CrashLocationsPage />} />
-      <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+      <Route path="*" element={<HomePage />} />
     </Route>
   </Routes>
 </BrowserRouter>
@@ -33,84 +33,3 @@ const App = () => {
 };
 
 export default App;
-
-
-// const PageLayout = () => (
-//   <>
-  
-//     <header>
-//       <Header />
-//     </header>
-//     <Outlet />
-//     <footer>
-//       <Footer />
-//     </footer>
-//     {/* <GoToTop /> */}
-//   </>
-// );
-
-// const router = createBrowserRouter([
-//   {
-//     element: <PageLayout />,
-//     children: [
-//       {
-//         path: "/",
-//         element: <HomePage />,
-//       },
-//       {
-//         path: "calls/",
-//         element: <CallsPage />,
-//       },
-//       {
-//         path: "call/",
-//         element: <CallPage />,
-//       },
-//       {
-//         path: "incidents/",
-//         element: <IncidentsPage />,
-//       }
-//       ,
-//       {
-//         path: "incident/",
-//         element: <IncidentPage />,
-//       },
-//       {
-//         path: "arrests/",
-//         element: <ArrestsPage />,
-//       }
-//       ,
-//       {
-//         path: "arrest/",
-//         element: <ArrestPage />,
-//       },
-//       {
-//         path: "trafficstops/",
-//         element: <TrafficStopsPage />,
-//       },
-//       {
-//         path: "crashlocations/",
-//         element: <CrashLocationsPage />,
-//       },
-//       {
-//         path: "crashlocation/",
-//         element: <CrashLocationPage />,
-//       }
-//     ]
-//   },
-
-// ]  , { basename: "/patrolx-interface" }
-
-// );
-
-
-// function App() {
-
-//   return (
-//     <>
-//       <RouterProvider router={router} basename="/patrolx-interface" />
-//     </>
-//   )
-// }
-
-// export default App
-
