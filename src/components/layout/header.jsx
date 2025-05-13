@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
 
@@ -11,13 +12,13 @@ export default function Header() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">                       
-                        <Nav.Link href="/Calls">Calls</Nav.Link>
-                        <Nav.Link href="/Incidents">Incidents</Nav.Link>
-                        <Nav.Link href="/TrafficStops">Traffic Stops</Nav.Link>
-                        <Nav.Link href="/CrashLocations">Crash Locations</Nav.Link>
+                        <Nav.Link as={Link} to="/calls">Calls</Nav.Link>
+                        <Nav.Link as={Link} to="/incidents">Incidents</Nav.Link>
+                        <Nav.Link as={Link} to="/trafficStops">Traffic Stops</Nav.Link>
+                        <Nav.Link as={Link} to="/crashLocations">Crash Locations</Nav.Link>                       
                     </Nav>
                 </Navbar.Collapse>
-                
+
             </Container>
         </Navbar>
     );
