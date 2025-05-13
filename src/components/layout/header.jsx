@@ -11,10 +11,10 @@ export default function Header() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">                       
-                        <Nav.Link href="/patrolx-interface/Calls">Calls</Nav.Link>
-                        <Nav.Link href="/patrolx-interface/Incidents">Incidents</Nav.Link>
-                        <Nav.Link href="/patrolx-interface/TrafficStops">Traffic Stops</Nav.Link>
-                        <Nav.Link href="/patrolx-interface/CrashLocations">Crash Locations</Nav.Link>
+                        <Nav.Link href="/Calls">Calls</Nav.Link>
+                        <Nav.Link href="/Incidents">Incidents</Nav.Link>
+                        <Nav.Link href="/TrafficStops">Traffic Stops</Nav.Link>
+                        <Nav.Link href="/CrashLocations">Crash Locations</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 
