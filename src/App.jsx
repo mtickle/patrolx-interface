@@ -11,10 +11,7 @@ import ArrestPage from './routes/arrests/arrest';
 import TrafficStopsPage from './routes/traffic';
 import CrashLocationsPage from './routes/crashes';
 import CrashLocationPage from './routes/crashes/crash';
-import AdsbPage from './routes/adsb';
-import GoToTop from './components/layout/gototop';
-import AdsbIcao24Page from './routes/adsb/icao24';
-
+//import GoToTop from './components/layout/gototop';
 
 const PageLayout = () => (
   <>
@@ -26,7 +23,7 @@ const PageLayout = () => (
     <footer>
       <Footer />
     </footer>
-    <GoToTop />
+    {/* <GoToTop /> */}
   </>
 );
 
@@ -75,27 +72,20 @@ const router = createBrowserRouter([
       {
         path: "crashlocation/",
         element: <CrashLocationPage />,
-      },
-      {
-        path: "adsb/",
-        element: <AdsbPage />,
-      },
-      {
-        path: "adsb/icao24",
-        element: <AdsbIcao24Page />,
-      },
-
+      }
     ]
   },
 
-]);
+]  , { basename: "/patrolx-interface" }
+
+);
 
 
 function App() {
 
   return (
     <>
-      <RouterProvider router={router} basename="/patrolx" />
+      <RouterProvider router={router} basename="/patrolx-interface" />
     </>
   )
 }
