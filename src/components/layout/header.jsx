@@ -8,17 +8,17 @@ export default function Header() {
     return (
         <Navbar expand="lg" className='bg-body-secondary'>
             <Container>
-                <Navbar.Brand href="/">Home</Navbar.Brand>
+                <Navbar.Brand>PX-DCP</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">                       
+                    <Nav className="me-auto">
                         <Nav.Link as={Link} to="/calls">Calls</Nav.Link>
                         <Nav.Link as={Link} to="/incidents">Incidents</Nav.Link>
                         <Nav.Link as={Link} to="/trafficStops">Traffic Stops</Nav.Link>
-                        <Nav.Link as={Link} to="/crashLocations">Crash Locations</Nav.Link>                       
+                        <Nav.Link as={Link} to="/crashLocations">Crash Locations</Nav.Link>
+                        <Nav.Link as={Link} to="/home">Home</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-
             </Container>
         </Navbar>
     );

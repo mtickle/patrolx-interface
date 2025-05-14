@@ -6,9 +6,6 @@ import { PageDataCharts } from './charts';
 //--- CUSTOM IMPORTS: DATA TABLES
 import { PageDataTable } from './table';
 
-//--- CUSTOM IMPORTS: DATA MAP
-import { PageDataMap } from './map';
-
 //--- SET PAGE NAME
 function PageName() {
   return "Incidents"
@@ -31,16 +28,6 @@ export default function IncidentsPage() {
           <PageDataCharts />
         </div>
       </div>
-
-      <p></p>
-      <div className="card">
-        <div className="card-header">
-          Map
-        </div>
-        <div className="card-body">
-          <PageDataMap />
-        </div>
-      </div> 
 
       <p></p>
       <div className="card">
