@@ -24,17 +24,17 @@ function PageMap({ data }) {
 
     var BaseIcon = L.Icon.extend({
         options: {
-            iconSize:     [24, 24],
-            iconAnchor:   [22, 94],
-            popupAnchor:  [-3, -76]
+            iconSize: [24, 24],
+            iconAnchor: [22, 94],
+            popupAnchor: [-3, -76]
         }
     });
 
-    var redIcon = new BaseIcon({iconUrl: '/src/components/layout/map_markers/red-24.png'});
-    var yellowIcon = new BaseIcon({iconUrl: '/src/components/layout/map_markers/yellow-24.png'});
-    var blueIcon = new BaseIcon({iconUrl: '/src/components/layout/map_markers/blue-24.png'});
-    var greenIcon = new BaseIcon({iconUrl: '/src/components/layout/map_markers/green-24.png'});
-        return (
+    var redIcon = new BaseIcon({ iconUrl: '../../src/components/layout/map_markers/red-24.png' });
+    var yellowIcon = new BaseIcon({ iconUrl: '../../src/components/layout/map_markers/yellow-24.png' });
+    var blueIcon = new BaseIcon({ iconUrl: '../../src/components/layout/map_markers/blue-24.png' });
+    var greenIcon = new BaseIcon({ iconUrl: '../../src/components/layout/map_markers/green-24.png' });
+    return (
         <>
             <MapContainer
                 style={containerStyle}
@@ -56,23 +56,21 @@ function PageMap({ data }) {
 
                     let markerType = blueIcon;
 
-                    switch(item.call_type) {
+                    switch (item.call_type) {
                         case "MVC - Damage":
                             markerType = redIcon;
                             break;
                         case "Road Hazard":
                             markerType = yellowIcon;
                             break;
-                            case "Assist Motorist":
-                                markerType = greenIcon;
-                                break;
-                            default:
+                        case "Assist Motorist":
+                            markerType = greenIcon;
+                            break;
+                        default:
                             markerType = blueIcon;
                     }
 
-                    console.log(item.call_type);
-
-                    return <Marker key={index} position={position} icon={markerType} >
+                    return <Marker key={index} position={position}  >
                         <Popup>
                             {item.call_date} at {item.call_time}<br />
                             {item.call_agency}<br />
@@ -83,9 +81,9 @@ function PageMap({ data }) {
                 })}
 
             </MapContainer>
-            
+
         </>
-        
+
     );
 }
 

@@ -46,10 +46,10 @@ export default function HomePage() {
 					Weather
 				</div>
 				<div className="card-body">
-					{/* <Weather /> */}
+					 <Weather /> 
 				</div>
 				<div className="card-body">
-					{/* <WeatherDetails /> */}
+					<WeatherDetails /> 
 				</div>
 			</div>
 

@@ -6,18 +6,18 @@ export const TrafficCameras = () => {
             <div className='row'>
                 <div className="col-sm">
                     <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src="https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I40_US70.jpg&t=1739970403174" />
+                        <Card.Img variant="top" src="https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I87_Arendell.JPG&t=1747305658098" />
                         <Card.Body>
-                            <Card.Title>I-40 at US-70</Card.Title>
+                            <Card.Title>I-87 at NC-96</Card.Title>
                         </Card.Body>
                     </Card>
                 </div>
 
                 <div className="col-sm">
                     <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src="https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I-40_WB_NC_42.jpg&t=1739970322197" />
+                        <Card.Img variant="top" src="https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I87_mm434.JPG&t=1747305560393" />
                         <Card.Body>
-                            <Card.Title>I-40 at NC-42</Card.Title>
+                            <Card.Title>I-87 at Green Pace</Card.Title>
                         </Card.Body>
                     </Card>
                 </div>

@@ -66,11 +66,18 @@ export const Weather = () => {
         <>
 
           <div className='row'>
-            <div className="col-sm">
+            <div className="col-md-4">
               <Card style={{ width: '18rem' }}>
-                {/* <Card.Img variant="top" src="https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I40_US70.jpg&t=1739970403174" /> */}
+                <Card.Img variant="top" src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`} />               
                 <Card.Body>
-
+                  As of {new Date(weatherData.dt * 1000).toLocaleString("en-US", {
+                    weekday: "long",
+                    year: "numeric",  
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })} <br></br>
                   Currently {weatherData.main.temp}°F and {weatherData.weather[0].main}<br></br>
                   Humidity {Math.round(weatherData.main.humidity)}%<br></br>
                   Wind Speed {Math.round(weatherData.wind.speed)} mph
