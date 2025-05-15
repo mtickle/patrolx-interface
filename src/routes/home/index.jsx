@@ -4,13 +4,23 @@
 import { TrafficCameras } from './cameras';
 import { ActiveCalls } from './active_calls';
 import { Weather } from './weather';
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import { WeatherChart } from './charts/weather_chart';
 import { WeatherDetails } from './charts/weather_details';
+import WeatherMap from './wxmap';
 
 //--- SET PAGE NAME
 function PageName() {
 	return "Home"
 }
+
+const getMostRecentWeatherMap = async () => {
+  const res = await fetch(
+    "https://api.rainviewer.com/public/weather-maps.json"
+  );
+  const resJson = await res.json();
+  return resJson.radar.nowcast[0].path;
+};
 
 //--- BUILD PAGE
 export default function HomePage() {
@@ -43,13 +53,12 @@ export default function HomePage() {
 			<p></p>
 			<div className="card">
 				<div className="card-header">
-					Weather
+					Current Conditions: <Weather />
 				</div>
 				<div className="card-body">
-					 <Weather /> 
-				</div>
-				<div className="card-body">
-					<WeatherDetails /> 
+					
+					<WeatherMap />						
+
 				</div>
 			</div>
 

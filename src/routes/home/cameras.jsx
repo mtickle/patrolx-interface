@@ -7,7 +7,7 @@ export const TrafficCameras = () => {
                 <div className="col-sm">
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src="https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I87_Arendell.JPG&t=1747305658098" />
-                        <Card.Body>
+                        <Card.Body bg="Secondary">
                             <Card.Title>I-87 at NC-96</Card.Title>
                         </Card.Body>
                     </Card>

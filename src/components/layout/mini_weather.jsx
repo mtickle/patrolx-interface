@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Card from 'react-bootstrap/Card';
 
 
-export const Weather = () => {
+export const MiniWeather = () => {
 
   const API_KEY = "afd91300c7c073a148d3fb8141297070";
   const WEATHER_CITY = "raleigh";
@@ -18,29 +18,13 @@ export const Weather = () => {
     try {
       setLoading(true);
       setError(null);
-
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${WEATHER_CITY}&appid=${API_KEY}&units=imperial`;
-
       const response = await fetch(url);
       const data = await response.json();
       setWeatherData(data);
-
-      const foreCastresponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${WEATHER_CITY}&appid=${API_KEY}&units=imperial`
-      );
-      const forecastdata = await foreCastresponse.json();
-
-      console.log(forecastdata);
-
       setCity(cityName);
-
-      const dailyForecast = forecastdata.list.filter(
-        (item, index) => index % 8 === 0
-      );
-      setForecast(dailyForecast);
-    } catch (error) {
-      setError("Sorry, we couldn’t retrieve the weather data at this time");
-      console.log(error);
+    } catch (err) {
+      setError("Failed to fetch weather data.");
     } finally {
       setLoading(false);
     }
@@ -50,24 +34,20 @@ export const Weather = () => {
     fetchWeatherData(city);
   }, []);
 
-  function handleSearch(e) {
-    e.preventDefault();
-    fetchWeatherData(searchInput);
-  }
+
 
   if (loading) return <div className="wrapper">Loading...</div>;
 
   return (
-    <>
+    <div className="wrapper">
+
       {error && <p className="error">{error}</p>}
 
       {weatherData && weatherData.main && weatherData.weather && (
         <>
-          &nbsp;{weatherData.main.temp}°F and {weatherData.weather[0].main} - 
-          Humidity {Math.round(weatherData.main.humidity)}% - 
-          Wind Speed {Math.round(weatherData.wind.speed)} mph
+          {weatherData.main.temp}°F ({weatherData.weather[0].main})<br></br>
         </>
       )}
-    </>
+    </div>
   );
 };
