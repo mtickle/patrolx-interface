@@ -10,8 +10,7 @@ import ArrestPage from './routes/arrests/arrest';
 import TrafficStopsPage from './routes/traffic';
 import CrashLocationsPage from './routes/crashes';
 import CrashLocationPage from './routes/crashes/crash';
-import RoadIncidentsPage from './routes/roadIncidents';
-//import GoToTop from './components/layout/gototop';
+import RoadIncidentsPage from './routes/roadincidents';
 
 const App = () => {
   return (
