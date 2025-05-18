@@ -18,7 +18,7 @@ export const DataEndpoint = (apiEndPoint, itemCount) => {
         baseURL: "https://patrolx-api.onrender.com/api/" + apiEndPoint
     });
 
-    console.log("DataEndpoint: " + apiEndPoint + ":" + itemCount)
+    // console.log("DataEndpoint: " + apiEndPoint + ":" + itemCount)
 
     React.useEffect(() => {
         client.get('?limit=' + itemCount, config)
