@@ -8,6 +8,7 @@ import { DataEndpoint } from '../../components/data/data_endpoint';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 
+
 //--- BUILD MAP
 function PageMap({ data }) {
 
@@ -41,8 +42,6 @@ function PageMap({ data }) {
                         lat: Number(item.call_latitude.trim()),
                         lng: Number(item.call_longitude.trim())
                     };
-
-                    console.log(position)
 
                     return <Marker key={index} position={position}>
                         <Popup>

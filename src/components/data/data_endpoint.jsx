@@ -24,7 +24,7 @@ export const DataEndpoint = (apiEndPoint, itemCount) => {
         client.get('?limit=' + itemCount, config)
             .then((response) => {
                 setItems(response.data);
-                console.log(response.data)
+                //console.log(response.data)
             });
     }, []);
 

@@ -1,6 +1,7 @@
 
 import React from "react";
 import moment from "moment";
+import { Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 //--- STANDARD IMPORTS: DATA
@@ -14,15 +15,47 @@ function PageTable({ columns, data }) {
     return DataTable(columns, data)
 }
 
+//--- ADD THE BADGES FOR SEVERITY
+const getBadgeVariant = (severity) => {
+  switch (severity) {
+    case 1:
+      return 'danger';
+    case 2:
+      return 'warning';
+    case 3:
+      return 'success';
+    default:
+      return 'secondary';
+  }
+};
+
+
 //--- BUILD TABLE COLUMNS
 function TableColumns() {
 
     const columns = React.useMemo(
         () => [
+              {
+    Header: 'Sev',
+    accessor: 'severity',
+    Cell: ({ value }) => (
+      <Badge bg={getBadgeVariant(value)}>
+        {value}
+      </Badge>
+    ),
+  },
             {
-                Header: 'Date',
+                Header: 'Starts',
                 accessor: d => {
                     return moment(d.start_time)
+                        .local()
+                        .format("YYYY-MM-DD")
+                }
+            },
+                        {
+                Header: 'Ends',
+                accessor: d => {
+                    return moment(d.end_time)
                         .local()
                         .format("YYYY-MM-DD")
                 }

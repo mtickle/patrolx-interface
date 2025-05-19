@@ -7,6 +7,28 @@ import { DataEndpoint } from '../../components/data/data_endpoint';
 //const MapContainer = dynamic(() => import('react-leaflet'), {ssr: false})
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
+//import { mapIcons } from '@/lib/layout/map_icons';
+
+//--- STANDARD IMPORTS: MAP MARKERS
+import L from 'leaflet';
+import redIconImg from '@/components/layout/map_markers/red-24.png';
+import yellowIconImg from '@/components/layout/map_markers/yellow-24.png';
+import blueIconImg from '@/components/layout/map_markers/blue-24.png';
+import greenIconImg from '@/components/layout/map_markers/green-24.png';
+
+const createIcon = (iconUrl) =>
+    L.icon({
+        iconUrl,
+        iconSize: [24, 24],
+        iconAnchor: [12, 24],
+        popupAnchor: [0, -24],
+    });
+
+export const redIcon = createIcon(redIconImg);
+export const yellowIcon = createIcon(yellowIconImg);
+export const blueIcon = createIcon(blueIconImg);
+export const greenIcon = createIcon(greenIconImg);
+
 
 //--- BUILD MAP
 function PageMap({ data }) {
@@ -22,18 +44,8 @@ function PageMap({ data }) {
         lng: -78.65528542793695
     }
 
-    var BaseIcon = L.Icon.extend({
-        options: {
-            iconSize: [24, 24],
-            iconAnchor: [22, 94],
-            popupAnchor: [-3, -76]
-        }
-    });
 
-    var redIcon = new BaseIcon({ iconUrl: '../../src/components/layout/map_markers/red-24.png' });
-    var yellowIcon = new BaseIcon({ iconUrl: '../../src/components/layout/map_markers/yellow-24.png' });
-    var blueIcon = new BaseIcon({ iconUrl: '../../src/components/layout/map_markers/blue-24.png' });
-    var greenIcon = new BaseIcon({ iconUrl: '../../src/components/layout/map_markers/green-24.png' });
+
     return (
         <>
             <MapContainer
@@ -70,7 +82,7 @@ function PageMap({ data }) {
                             markerType = blueIcon;
                     }
 
-                    return <Marker key={index} position={position}  >
+                    return <Marker key={index} position={position} icon={markerType}>
                         <Popup>
                             {item.call_date} at {item.call_time}<br />
                             {item.call_agency}<br />
