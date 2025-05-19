@@ -44,15 +44,6 @@ function TableColumns() {
                 Header: 'Location',
                 accessor: 'call_address',
             },
-            // {
-            //     Header: "",
-            //     id: "",
-            //     accessor: "_id",
-            //     Cell: ({ row }) => (<Link className="btn-outline-primary btn-small" to={{
-            //         pathname: `/call`,
-            //         search: `?id=${row.original.callid}`,
-            //     }}>View</Link>)
-            // }
         ],
         []
     )

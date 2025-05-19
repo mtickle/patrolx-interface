@@ -7,28 +7,7 @@ import { DataEndpoint } from '../../components/data/data_endpoint';
 //const MapContainer = dynamic(() => import('react-leaflet'), {ssr: false})
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
-//import { mapIcons } from '@/lib/layout/map_icons';
-
-//--- STANDARD IMPORTS: MAP MARKERS
-import L from 'leaflet';
-import redIconImg from '@/components/layout/map_markers/red-24.png';
-import yellowIconImg from '@/components/layout/map_markers/yellow-24.png';
-import blueIconImg from '@/components/layout/map_markers/blue-24.png';
-import greenIconImg from '@/components/layout/map_markers/green-24.png';
-
-const createIcon = (iconUrl) =>
-    L.icon({
-        iconUrl,
-        iconSize: [24, 24],
-        iconAnchor: [12, 24],
-        popupAnchor: [0, -24],
-    });
-
-export const redIcon = createIcon(redIconImg);
-export const yellowIcon = createIcon(yellowIconImg);
-export const blueIcon = createIcon(blueIconImg);
-export const greenIcon = createIcon(greenIconImg);
-
+import { mapIcons } from '@/components/layout/mapIcons';
 
 //--- BUILD MAP
 function PageMap({ data }) {
@@ -66,20 +45,20 @@ function PageMap({ data }) {
                         lng: Number(item.call_longitude.trim())
                     };
 
-                    let markerType = blueIcon;
+                    let markerType = mapIcons.blue;
 
                     switch (item.call_type) {
                         case "MVC - Damage":
-                            markerType = redIcon;
+                            markerType = mapIcons.red;
                             break;
                         case "Road Hazard":
-                            markerType = yellowIcon;
+                            markerType = mapIcons.yellow;
                             break;
                         case "Assist Motorist":
-                            markerType = greenIcon;
+                            markerType = mapIcons.green;
                             break;
                         default:
-                            markerType = blueIcon;
+                            markerType = mapIcons.blue;
                     }
 
                     return <Marker key={index} position={position} icon={markerType}>

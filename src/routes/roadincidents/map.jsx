@@ -1,4 +1,4 @@
-import  { useRef } from 'react';
+import { useRef } from 'react';
 
 // //--- STANDARD IMPORTS: DATA
 import { DataEndpoint } from '../../components/data/data_endpoint';
@@ -6,6 +6,7 @@ import { DataEndpoint } from '../../components/data/data_endpoint';
 //--- STANDARD IMPORTS: MAP
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
+import { mapIcons } from '@/components/layout/mapIcons';
 
 //--- BUILD MAP
 function PageMap({ data }) {
@@ -41,7 +42,24 @@ function PageMap({ data }) {
                         lng: Number(item.longitude)
                     };
 
-                    return <Marker key={index} position={position}>
+                    let markerType = mapIcons.blue;
+
+                    switch (item.severity) {
+                        case 1:
+                            markerType = mapIcons.red;
+                            break;
+                        case 2:
+                            markerType = mapIcons.yellow;
+                            break;
+                        case 3:
+                            markerType = mapIcons.green;
+                            break;
+                        default:
+                            markerType = mapIcons.blue;
+                    }
+
+
+                    return <Marker key={index} position={position}  icon={markerType}>
                         <Popup>
                             {item.start_time}<br />
                             {item.condition}<br />
