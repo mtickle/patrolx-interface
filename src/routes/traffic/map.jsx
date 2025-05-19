@@ -6,6 +6,7 @@ import { DataEndpoint } from '../../components/data/data_endpoint';
 //--- STANDARD IMPORTS: MAP
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
+import { mapIcons } from '@/components/layout/mapIcons';
 
 //--- BUILD MAP
 function PageMap({ data }) {
@@ -35,13 +36,17 @@ function PageMap({ data }) {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
+                
+
                 {data.map((item, index) => {
                     let position = {
                         lat: Number(item.traffic_latitude.trim()),
                         lng: Number(item.traffic_longitude.trim())
                     };
 
-                    return <Marker key={index} position={position}>
+                    let markerType = mapIcons.blue;
+
+                    return <Marker key={index} position={position}  icon={markerType}>
                         <Popup>
                             {item.traffic_dateofstop} at {item.traffic_timeofstop}<br />
                             {item.traffic_description}<br />

@@ -22,3 +22,5 @@ export const mapIcons = {
     blue: createIcon(blueIconImg),
     green: createIcon(greenIconImg),
 };
+
+
