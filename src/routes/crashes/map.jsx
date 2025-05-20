@@ -6,6 +6,7 @@ import { DataEndpoint } from '../../components/data/data_endpoint';
 //--- STANDARD IMPORTS: MAP
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
+import { mapIcons } from '@/components/layout/mapIcons';
 
 //--- BUILD MAP
 function PageMap({ data }) {
@@ -41,7 +42,9 @@ function PageMap({ data }) {
                         lng: Number(item.crash_longitude.trim())
                     };
 
-                    return <Marker key={index} position={position}>
+                     let markerType = mapIcons.blue;
+
+                    return <Marker key={index} position={position} icon={markerType}>
                         <Popup>
                             {item.crash_date} at {item.crash_time}<br />
                             {item.crash_locationroadname}<br />
