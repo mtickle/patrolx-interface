@@ -9,6 +9,14 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import { mapIcons } from '@/components/layout/mapIcons';
 
+const formatDate = (isoDate) => {
+    const d = new Date(isoDate);
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const year = d.getFullYear();
+    return `${month}-${day}-${year}`;
+};
+
 //--- BUILD MAP
 function PageMap({ data }) {
 
@@ -63,7 +71,7 @@ function PageMap({ data }) {
 
                     return <Marker key={index} position={position} icon={markerType}>
                         <Popup>
-                            {item.call_date} at {item.call_time}<br />
+                            {formatDate(item.call_date)} at {item.call_time}<br />
                             {item.call_agency}<br />
                             {item.call_type}<br />
                             {item.call_address}<br />
