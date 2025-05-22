@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import Layout from './components/layout/layout';
 import HomePage from './routes/home';
 import CallsPage from './routes/calls'
@@ -13,6 +14,11 @@ import CrashLocationPage from './routes/crashes/crash';
 import RoadIncidentsPage from './routes/roadincidents';
 
 const App = () => {
+
+   const { isAuthenticated, loginWithRedirect, logout, isLoading, user } = useAuth0();
+
+   
+
   return (
     <BrowserRouter basename="/patrolx-interface">
       <Routes>

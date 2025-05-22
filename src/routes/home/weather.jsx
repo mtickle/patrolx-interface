@@ -30,7 +30,7 @@ export const Weather = () => {
       );
       const forecastdata = await foreCastresponse.json();
 
-      console.log(forecastdata);
+     // console.log(forecastdata);
 
       setCity(cityName);
 
