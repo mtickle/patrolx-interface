@@ -21,15 +21,7 @@ export default function TrafficStopsPage() {
     <div className="container-xl">
       <h1 className="display-6"><PageName /></h1>
 
-    <p></p>
-      <div className="card">
-        <div className="card-header">
-          Charts
-        </div>
-        <div className="card-body">
-          <PageDataCharts />
-        </div>
-      </div>
+
 
       <p></p>
       <div className="card">
@@ -39,7 +31,7 @@ export default function TrafficStopsPage() {
         <div className="card-body">
           <PageDataMap />
         </div>
-      </div> 
+      </div>
 
       <p></p>
       <div className="card">
@@ -50,6 +42,17 @@ export default function TrafficStopsPage() {
           <PageDataTable />
         </div>
       </div>
+
+      <p></p>
+      <div className="card">
+        <div className="card-header">
+          Charts
+        </div>
+        <div className="card-body">
+          <PageDataCharts />
+        </div>
+      </div>
+
     </div>
   )
 }
