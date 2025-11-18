@@ -31,12 +31,11 @@ export const GenericChart = ({
     type = 'bar',
     limit = 10,
     processLabel = (l) => l,
-    orientation = 'y' // Defaults to Horizontal bars (Label on Left)
+    orientation = 'y'
 }) => {
 
     const { data: chartData, isLoading } = useApiDataEndpoint(endpoint, limit);
 
-    console.log(`[${title}] Data:`, chartData);
 
 
     if (isLoading) {
@@ -51,38 +50,21 @@ export const GenericChart = ({
         return <div className="text-center p-4 text-muted">No data available for {title}</div>;
     }
 
-    // --- PARANOID DATA NORMALIZER ---
-    const normalizedData = chartData.map(rawItem => {
-        // 1. FIND LABEL: Check all known variations
-        const rawLabel = rawItem.item || rawItem.itemname || rawItem.agency || "Unknown";
-
-        // 2. FIND VALUE: Check 'itemcount', 'count', or 'value'
-        const rawValue = rawItem.itemcount || rawItem.count || rawItem.value;
-
-        // 3. CLEAN VALUE: Remove commas and force to number
-        //    "4,689" -> 4689.  "4689" -> 4689.  undefined -> 0.
-        const stringValue = String(rawValue || 0).replace(/,/g, '');
-        const cleanValue = Number(stringValue);
-
-        return {
-            label: processLabel(rawLabel),
-            value: isNaN(cleanValue) ? 0 : cleanValue
-        };
-    });
-
-    // --- DEBUG: UNCOMMENT TO SEE DATA IN CONSOLE ---
-    // console.log(`[${title}] Final Data:`, normalizedData);
-
+    // --- THE CLEAN DATA MAPPING ---
+    // We trust the API now. It returns 'label' (text) and 'value' (number).
     const formattedData = {
-        labels: normalizedData.map(d => d.label),
+        // Map directly to the 'label' key. We keep processLabel() just in case 
+        // you want to do frontend formatting (like capitalizing words).
+        labels: chartData.map(d => processLabel(d.label)),
+
         datasets: [
             {
                 label: title,
-                data: normalizedData.map(d => d.value),
+                // Map directly to the 'value' key. No Number() casting needed.
+                data: chartData.map(d => d.value),
                 backgroundColor: '#0766D1',
                 borderColor: 'rgba(0, 0, 0, 0.8)',
                 borderWidth: 1,
-                // IMPORTANT: 'y' = Horizontal Bar, 'x' = Vertical Bar
                 indexAxis: orientation,
             },
         ],
@@ -96,8 +78,15 @@ export const GenericChart = ({
             title: { display: false },
         },
         scales: {
-            x: { beginAtZero: true },
-            y: { beginAtZero: true }
+            // 🚨 FIX: Ensure the value axis is recognized as linear 🚨
+            x: {
+                type: 'linear', // Explicitly define X as linear for horizontal bars
+                beginAtZero: true
+            },
+            y: {
+                type: 'category', // Explicitly define Y as category for horizontal bars
+                beginAtZero: true
+            }
         }
     };
 
