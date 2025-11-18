@@ -1,11 +1,7 @@
-import React from "react";
 
 //--- IMPORTS: CHART ELEMENTS
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 import { Bar } from 'react-chartjs-2';
-import { ChartDataLibrary } from '../../../components/data/chart_data_library'
-import Chart from 'chart.js/auto';
-
-
 
 //--- SET THE CHART SCOPE
 var chartScope = "getIncidentCountsByDayOfWeek";
@@ -14,7 +10,7 @@ var chartName = "Incidents by Day";
 //--- BUILD CHART ELEMENT
 export const IncidentCountsByDayBarChart = () => {
 
-  var chartActualData = ChartDataLibrary(chartScope, 8);
+  const { data: chartActualData } = useApiDataEndpoint(chartScope, 8);
 
   const chartData = {
     labels: chartActualData.map(item => item.itemname),

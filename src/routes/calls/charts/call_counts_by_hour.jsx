@@ -1,17 +1,14 @@
-import React from "react";
 
 //--- IMPORTS: CHART ELEMENTS
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 import { Line } from 'react-chartjs-2';
-import { ChartDataLibrary } from '../../../components/data/chart_data_library'
-import Chart from 'chart.js/auto';
 //--- SET THE CHART SCOPE
 var chartScope = "getCallCountsByHour";
 var chartName = "Calls by Hour";
-
 //--- BUILD CHART ELEMENT
 export const CallCountsByHourLineChart = () => {
 
-    var chartActualData = ChartDataLibrary(chartScope, 25);
+    const { data: chartActualData } = useApiDataEndpoint(chartScope, 25);
 
     const chartData = {
         labels: chartActualData.map(item => item.item),

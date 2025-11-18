@@ -1,11 +1,9 @@
 
 import { Bar } from 'react-chartjs-2';
-import { ChartDataLibrary } from '../../../components/data/chart_data_library'
-import Chart from 'chart.js/auto';
 
 export const ArrestCountsByAgencyBarChart = () => {
 
-  var chartActualData = ChartDataLibrary("getArrestAgencyCounts", 10);
+  const { data: chartActualData } = useDataEndpoint("getArrestAgencyCounts", 10);
 
   const chartData = {
     labels: chartActualData.map(item => item._id),

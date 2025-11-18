@@ -1,10 +1,9 @@
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 import { Bar } from 'react-chartjs-2';
-import { ChartDataLibrary } from '../../../components/data/chart_data_library'
-import Chart from 'chart.js/auto';
-import { act } from 'react';
+
 export const IncidentCountsByTypeBarChart = () => {
 
-  var chartActualData = ChartDataLibrary("getincidentcountsbytype", 10);
+  const { data: chartActualData } = useApiDataEndpoint("getincidentcountsbytype", 10);
 
   const chartData = {
     labels: chartActualData.map(item => item.item),

@@ -1,17 +1,15 @@
-import React from "react";
 
 //--- IMPORTS: CHART ELEMENTS
 import { Bar } from 'react-chartjs-2';
-import { ChartDataLibrary } from '../../../components/data/chart_data_library'
-import Chart from 'chart.js/auto';
+// Adjust the number of '../' until VS Code Intellisense finds the file
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 //--- SET THE CHART SCOPE
 var chartScope = "getCallCountsByIncident";
 var chartName = "Call Types";
-
 //--- BUILD CHART ELEMENT
 export const CallCountsByIncidentBarChart = () => {
 
-    var chartActualData = ChartDataLibrary(chartScope, 10);
+    const { data: chartActualData } = useApiDataEndpoint(chartScope, 10);
 
     const chartData = {
         labels: chartActualData.map(item => item.item),

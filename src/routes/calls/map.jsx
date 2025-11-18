@@ -1,12 +1,12 @@
 import { useRef } from 'react';
 
 // //--- STANDARD IMPORTS: DATA
-import { DataEndpoint } from '../../components/data/data_endpoint';
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 
 //--- STANDARD IMPORTS: MAP
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
-import "leaflet/dist/leaflet.css"
 import { mapIcons } from '@/components/layout/mapIcons';
+import "leaflet/dist/leaflet.css";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 const formatDate = (isoDate) => {
     const d = new Date(isoDate);
@@ -85,8 +85,9 @@ export const PageDataMap = () => {
 
     //--- LOAD DATA
     var getAllName = "getAllCalls"
-    var mapData = DataEndpoint(getAllName, 20);
 
+    const { data: mapData, isLoading } = useApiDataEndpoint(getAllName, 20);
+    if (isLoading) return <div>Loading...</div>;
     return (
         <>
             <h5>Map</h5>

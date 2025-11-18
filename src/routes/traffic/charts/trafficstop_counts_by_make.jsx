@@ -1,16 +1,16 @@
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 import { Bar } from 'react-chartjs-2';
-import { ChartDataLibrary } from '../../../components/data/chart_data_library'
-import Chart from 'chart.js/auto';
+
 export const TrafficStopsCountsByMakeBarChart = () => {
 
-    var chartActualData = ChartDataLibrary("getTrafficStopMakeCounts", 10);
+  const { data: chartActualData } = useApiDataEndpoint("getTrafficStopMakeCounts", 10);
 
-    const chartData = {
-        labels: chartActualData.map(item => item.itemname),
+  const chartData = {
+    labels: chartActualData.map(item => item.itemname),
     datasets: [
       {
-        label: 'Incidents', 
-        data: chartActualData.map(item => item.itemcount), 
+        label: 'Incidents',
+        data: chartActualData.map(item => item.itemcount),
         backgroundColor: ['#0766D1'],
         borderColor: 'rgba(0, 0, 0, 0.8)',
         borderWidth: 1,
@@ -27,11 +27,11 @@ export const TrafficStopsCountsByMakeBarChart = () => {
     },
   };
 
-    return (
-        <>
-            <h5>Vehicle Makes</h5>
-            <Bar data={chartData} options={chartOptions} />
-        </>
-    );
+  return (
+    <>
+      <h5>Vehicle Makes</h5>
+      <Bar data={chartData} options={chartOptions} />
+    </>
+  );
 };
 

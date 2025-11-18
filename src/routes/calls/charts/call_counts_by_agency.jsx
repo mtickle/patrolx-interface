@@ -1,7 +1,6 @@
 //--- IMPORTS: CHART ELEMENTS
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 import { Bar } from 'react-chartjs-2';
-import { ChartDataLibrary } from '../../../components/data/chart_data_library'
-import Chart from 'chart.js/auto';
 
 //--- SET THE CHART SCOPE
 var chartScope = "getCallCountsByAgency";
@@ -10,7 +9,7 @@ var chartName = "Responding Agency";
 //--- BUILD CHART ELEMENT
 export const CallCountsByAgencyBarChart = () => {
 
-  var chartActualData = ChartDataLibrary(chartScope, 10);
+  const { data: chartActualData } = useApiDataEndpoint(chartScope, 10);
 
   const chartData = {
 

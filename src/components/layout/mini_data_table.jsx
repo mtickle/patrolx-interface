@@ -1,26 +1,10 @@
-
-
 //-- TABLE
-import { useTable, usePagination, useSortBy } from 'react-table'
+import { usePagination, useSortBy, useTable } from 'react-table';
 
-export default function MiniDataTable(columns, data) {
+// 1. FIX: Destructure props with curly braces { columns, data }
+export default function MiniDataTable({ columns, data }) {
 
-    const generateUUID = () => {
-        let
-            d = new Date().getTime(),
-            d2 = ((typeof performance !== 'undefined') && performance.now && (performance.now() * 1000)) || 0;
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
-            let r = Math.random() * 16;
-            if (d > 0) {
-                r = (d + r) % 16 | 0;
-                d = Math.floor(d / 16);
-            } else {
-                r = (d2 + r) % 16 | 0;
-                d2 = Math.floor(d2 / 16);
-            }
-            return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
-        });
-    };
+    // 2. DELETED: generateUUID function (It causes performance issues in keys)
 
     const {
         getTableProps,
@@ -28,6 +12,7 @@ export default function MiniDataTable(columns, data) {
         headerGroups,
         prepareRow,
         page,
+        // Unused pagination props kept for future use
         canPreviousPage,
         canNextPage,
         pageOptions,
@@ -48,20 +33,18 @@ export default function MiniDataTable(columns, data) {
     )
 
     return (
-
-
         <>
             <table {...getTableProps()} className="table table-striped">
-
                 <thead>
                     {headerGroups.map(headerGroup => {
-                        const { key, ...mtHeaderGroupProps } = headerGroup.getHeaderGroupProps()
+                        // 3. FIX: Extract key correctly from getHeaderGroupProps
+                        const { key, ...restHeaderGroupProps } = headerGroup.getHeaderGroupProps();
                         return (
-                            <tr key={key} {...mtHeaderGroupProps}>
+                            <tr key={key} {...restHeaderGroupProps}>
                                 {headerGroup.headers.map(column => {
-                                    const { key, ...mtColumn } = column.getHeaderProps()
+                                    const { key, ...restColumnProps } = column.getHeaderProps();
                                     return (
-                                        <th className='small' key={key} {...mtColumn}>
+                                        <th className='small' key={key} {...restColumnProps}>
                                             {column.render('Header')}
                                         </th>
                                     )
@@ -69,49 +52,33 @@ export default function MiniDataTable(columns, data) {
                             </tr>
                         )
                     })}
-
                 </thead>
 
                 <tbody {...getTableBodyProps()}>
-                    {page.map((mtRow, i) => {
-                        prepareRow(mtRow)
-                        return (<tr key={i}>
-                            {mtRow.cells.map(mtCell => {
-                                const { key, ...mtCellProps } = mtRow.getRowProps()
-                                return <td className='small' key={generateUUID()} {...mtCellProps}>
-                                    {mtCell.render('Cell')}
-                                </td>
-                            })}
-                        </tr>)
+                    {page.map((row, i) => {
+                        prepareRow(row)
+                        // 4. FIX: Add row.getRowProps() to the <tr>
+                        // (Contains the key and logic for row selection)
+                        const { key, ...restRowProps } = row.getRowProps();
+
+                        return (
+                            <tr key={key} {...restRowProps}>
+                                {row.cells.map(cell => {
+                                    // 5. FIX: Use cell.getCellProps() for the key
+                                    // Do NOT use UUIDs here.
+                                    const { key, ...restCellProps } = cell.getCellProps();
+
+                                    return (
+                                        <td className='small' key={key} {...restCellProps}>
+                                            {cell.render('Cell')}
+                                        </td>
+                                    )
+                                })}
+                            </tr>
+                        )
                     })}
                 </tbody>
             </table>
-            
-            {/* <div>
-                <button className="btn btn-outline-dark" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                    {'<<'}
-                </button>{' '}
-                <button className="btn btn-outline-dark" onClick={() => previousPage()} disabled={!canPreviousPage}>
-                    {'<'}
-                </button>{' '}
-                <button className="btn btn-outline-dark" onClick={() => nextPage()} disabled={!canNextPage}>
-                    {'>'}
-                </button>{' '}
-                <button className="btn btn-outline-dark px-2" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-                    {'>>'}
-                </button>{' '}
-
-                <div className="btn align-baseline">
-                    Page{' '}
-                    <strong>
-                        {pageIndex + 1} of {pageOptions.length}
-                    </strong>{' '}
-                </div>
-               
-               
-            </div> */}
         </>
     )
-
-
 }

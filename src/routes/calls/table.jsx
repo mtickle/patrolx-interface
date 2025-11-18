@@ -1,10 +1,9 @@
 
-import React from "react";
-import { Link } from "react-router-dom";
 import moment from "moment";
+import React from "react";
 
 //--- STANDARD IMPORTS: DATA
-import { DataEndpoint } from '../../components/data/data_endpoint';
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 
 //-- STANDARD IMPORTS: TABLE
 import DataTable from '../../components/layout/data_table';
@@ -54,9 +53,11 @@ function TableColumns() {
 export const PageDataTable = () => {
 
     //--- LOAD DATA
-    var getAllName = "getAllCalls"
     var tableColumns = TableColumns();
-    var tableData = DataEndpoint(getAllName, 100);
+
+    var getAllName = "getAllCalls"
+    const { data: tableData, isLoading } = useApiDataEndpoint(getAllName, 100);
+    if (isLoading) return <div>Loading...</div>;
 
     return (
         <>

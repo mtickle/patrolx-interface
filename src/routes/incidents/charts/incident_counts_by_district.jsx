@@ -1,17 +1,16 @@
 
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 import { Bar } from 'react-chartjs-2';
-import { ChartDataLibrary } from '../../../components/data/chart_data_library'
-import Chart from 'chart.js/auto';
-export const IncidentCountsByDistrictBarChart = () => {
 
-  var chartActualData = ChartDataLibrary("getIncidentCountsByDistrict", 6);
+export const IncidentCountsByDistrictBarChart = () => {
+  const { data: chartActualData } = useApiDataEndpoint("getIncidentCountsByDistrict", 6);
 
   const chartData = {
     labels: chartActualData.map(item => item.itemname),
     datasets: [
       {
-        label: 'Incidents', 
-        data: chartActualData.map(item => item.itemcount), 
+        label: 'Incidents',
+        data: chartActualData.map(item => item.itemcount),
         backgroundColor: ['#0766D1'],
         borderColor: 'rgba(0, 0, 0, 0.8)',
         borderWidth: 1,

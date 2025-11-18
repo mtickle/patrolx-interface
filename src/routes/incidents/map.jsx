@@ -1,11 +1,11 @@
-import  { useRef } from 'react';
+import { useRef } from 'react';
 
 // //--- STANDARD IMPORTS: DATA
-import { DataEndpoint } from '../../components/data/data_endpoint';
+//import { useDataEndpoint } from "../../hooks/data_endpoint";
 
 //--- STANDARD IMPORTS: MAP
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
-import "leaflet/dist/leaflet.css"
+import "leaflet/dist/leaflet.css";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 //--- BUILD MAP
 function PageMap({ data }) {
@@ -60,7 +60,7 @@ export const PageDataMap = () => {
 
     //--- LOAD DATA
     var getAllName = "getAllIncidents"
-    var mapData = DataEndpoint(getAllName, 20);
+    const { data: mapData } = useDataEndpoint(getAllName, 20);
 
     return (
         <>

@@ -1,13 +1,13 @@
 import { useRef } from 'react';
 
 // //--- STANDARD IMPORTS: DATA
-import { DataEndpoint } from '../../components/data/data_endpoint';
+import { useDataEndpoint } from "../../hooks/olduseDataEndpoint";
 
 //--- STANDARD IMPORTS: MAP
 //const MapContainer = dynamic(() => import('react-leaflet'), {ssr: false})
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
-import "leaflet/dist/leaflet.css"
 import { mapIcons } from '@/components/layout/mapIcons';
+import "leaflet/dist/leaflet.css";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 const formatDate = (isoDate) => {
     const d = new Date(isoDate);
@@ -30,8 +30,6 @@ function PageMap({ data }) {
         lat: 35.8158871065979,
         lng: -78.65528542793695
     }
-
-
 
     return (
         <>
@@ -86,13 +84,11 @@ function PageMap({ data }) {
     );
 }
 
-
 export const CallsMiniMap = () => {
-
     //--- LOAD DATA
     var getAllName = "getAllCalls"
-    var mapData = DataEndpoint(getAllName, 10);
-
+    const { data: mapData, isLoading } = useDataEndpoint(getAllName, 10);
+    if (isLoading) return <div>Loading...</div>;
     return (
         <>
             <PageMap data={mapData} />

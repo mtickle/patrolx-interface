@@ -1,16 +1,16 @@
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 import { Bar } from 'react-chartjs-2';
-import { ChartDataLibrary } from '../../../components/data/chart_data_library'
-import Chart from 'chart.js/auto';
+
 export const TrafficStopsCountsByGenderBarChart = () => {
 
-    var chartActualData = ChartDataLibrary("getTrafficStopGenderCounts", 10);
+  const { data: chartActualData } = useApiDataEndpoint("getTrafficStopGenderCounts", 10);
 
-    const chartData = {
-        labels: chartActualData.map(item => item.itemname),
+  const chartData = {
+    labels: chartActualData.map(item => item.itemname),
     datasets: [
       {
-        label: 'Incidents', 
-        data: chartActualData.map(item => item.itemcount), 
+        label: 'Incidents',
+        data: chartActualData.map(item => item.itemcount),
         backgroundColor: ['#0766D1'],
         borderColor: 'rgba(0, 0, 0, 0.8)',
         borderWidth: 1,
@@ -27,11 +27,11 @@ export const TrafficStopsCountsByGenderBarChart = () => {
     },
   };
 
-    return (
-        <>
-            <h5>Genders</h5>
-            <Bar data={chartData} options={chartOptions} />
-        </>
-    );
+  return (
+    <>
+      <h5>Genders</h5>
+      <Bar data={chartData} options={chartOptions} />
+    </>
+  );
 };
 

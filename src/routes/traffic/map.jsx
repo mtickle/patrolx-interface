@@ -1,12 +1,12 @@
-import  { useRef } from 'react';
+import { useRef } from 'react';
 
-// //--- STANDARD IMPORTS: DATA
-import { DataEndpoint } from '../../components/data/data_endpoint';
+//--- STANDARD IMPORTS: DATA
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 
 //--- STANDARD IMPORTS: MAP
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
-import "leaflet/dist/leaflet.css"
 import { mapIcons } from '@/components/layout/mapIcons';
+import "leaflet/dist/leaflet.css";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 const formatDate = (isoDate) => {
     const d = new Date(isoDate);
@@ -44,7 +44,7 @@ function PageMap({ data }) {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
-                
+
 
                 {data.map((item, index) => {
                     let position = {
@@ -54,7 +54,7 @@ function PageMap({ data }) {
 
                     let markerType = mapIcons.blue;
 
-                    return <Marker key={index} position={position}  icon={markerType}>
+                    return <Marker key={index} position={position} icon={markerType}>
                         <Popup>
                             {formatDate(item.traffic_dateofstop)} at {item.traffic_timeofstop}<br />
                             {item.traffic_description}<br />
@@ -73,7 +73,7 @@ export const PageDataMap = () => {
 
     //--- LOAD DATA
     var getAllName = "getAllTraffic"
-    var mapData = DataEndpoint(getAllName, 20);
+    const { data: mapData } = useApiDataEndpoint(getAllName, 20);
 
     return (
         <>

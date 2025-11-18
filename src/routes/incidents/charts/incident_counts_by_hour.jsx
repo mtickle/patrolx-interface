@@ -1,9 +1,10 @@
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 import { Line } from 'react-chartjs-2';
-import { ChartDataLibrary } from '../../../components/data/chart_data_library'
-import Chart from 'chart.js/auto';
+
+
 export const IncidentsCountsByHourLineChart = () => {
 
-    var chartActualData = ChartDataLibrary("getIncidentCountsByHour", 25);
+    const { data: chartActualData } = useApiDataEndpoint("getIncidentCountsByHour", 25);
 
     const chartData = {
         labels: chartActualData.map(item => item.item),

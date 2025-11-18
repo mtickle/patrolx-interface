@@ -1,7 +1,6 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from './header';
 import Footer from './footer';
+import Header from './header';
 
 
 const Layout = () => {
@@ -11,7 +10,7 @@ const Layout = () => {
                 <Header />
             </header>
 
-            <main style={{ padding: '1rem' }}>
+            <main className="p-4">
                 <Outlet />
             </main>
 

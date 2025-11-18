@@ -1,9 +1,8 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
 
 //--- STANDARD IMPORTS: DATA
-import { DataEndpoint } from '../../components/data/data_endpoint';
+//import { useDataEndpoint } from "../../hooks/data_endpoint";
 
 //-- STANDARD IMPORTS: TABLE
 import DataTable from '../../components/layout/data_table';
@@ -62,7 +61,7 @@ export const PageDataTable = () => {
     //--- LOAD DATA
     var getAllName = "getAllCcbiArrests"
     var tableColumns = TableColumns();
-    var tableData = DataEndpoint(getAllName, 100);
+    const { data: tableData } = useDataEndpoint(getAllName, 100);
 
     return (
         <>

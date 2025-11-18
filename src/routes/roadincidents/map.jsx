@@ -1,14 +1,12 @@
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 import { useRef } from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useState } from 'react';
-// //--- STANDARD IMPORTS: DATA
-import { DataEndpoint } from '../../components/data/data_endpoint';
 
 //--- STANDARD IMPORTS: MAP
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
-import "leaflet/dist/leaflet.css"
 import { mapIcons } from '@/components/layout/mapIcons';
+import "leaflet/dist/leaflet.css";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 const formatDate = (isoDate) => {
     const d = new Date(isoDate);
@@ -73,9 +71,9 @@ function PageMap({ data }) {
                         <Popup>
                             <InputGroup className="input-group input-group-sm mb-3">
                                 <InputGroup.Text className="w-50" >Start Date: </InputGroup.Text>
-                                <Form.Control value={formatDate(item.start_time)}  readOnly />
+                                <Form.Control value={formatDate(item.start_time)} readOnly />
                             </InputGroup>
-                            
+
                             Starts: {formatDate(item.start_time)}<br />
                             Condition: {item.condition}<br />
                             Location: {item.location}<br />
@@ -93,7 +91,7 @@ export const PageDataMap = () => {
 
     //--- LOAD DATA
     var getAllName = "getAllRoadIncidents"
-    var mapData = DataEndpoint(getAllName, 20);
+    const { data: mapData } = useApiDataEndpoint(getAllName, 20);
 
     return (
         <>

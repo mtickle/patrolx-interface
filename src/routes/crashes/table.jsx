@@ -1,9 +1,10 @@
 
-import React from "react";
 import moment from "moment";
+import React from "react";
 
 //--- STANDARD IMPORTS: DATA
-import { DataEndpoint } from '../../components/data/data_endpoint';
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
+
 
 //-- STANDARD IMPORTS: TABLE
 import DataTable from '../../components/layout/data_table';
@@ -58,7 +59,7 @@ export const PageDataTable = () => {
     //--- LOAD DATA
     var getAllName = "getAllCrashes"
     var tableColumns = TableColumns();
-    var tableData = DataEndpoint(getAllName, 100);
+    const { data: tableData } = useApiDataEndpoint(getAllName, 100);
 
     return (
         <>
