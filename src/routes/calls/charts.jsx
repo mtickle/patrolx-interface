@@ -10,7 +10,7 @@ export const PageDataCharts = () => {
             <div className="row mb-4">
                 <div className="col-md-6">
                     <GenericChart
-                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_AGENCY} // or "getCallCountsByAgency"
+                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_AGENCY}
                         title="Responding Agency"
                         type="bar"
                         // We can pass that inline function right here!
@@ -19,7 +19,7 @@ export const PageDataCharts = () => {
                 </div>
                 <div className="col-md-6">
                     <GenericChart
-                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_TYPE} // or "getCallCountsByIncident"
+                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_TYPE}
                         title="Call Types"
                         type="bar"
                     />
@@ -30,15 +30,14 @@ export const PageDataCharts = () => {
             <div className="row">
                 <div className="col-md-6">
                     <GenericChart
-                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_DAY} // or "getCallCountsByDayOfWeek"
+                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_DAY}
                         title="Calls by Day"
                         type="bar"
-                        labelKey="itemname" // This chart used 'itemname' instead of 'item'
                     />
                 </div>
                 <div className="col-md-6">
                     <GenericChart
-                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_HOUR} // or "getCallCountsByHour"
+                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_HOUR}
                         title="Calls by Hour"
                         type="line"
                         limit={25} // This chart needed a higher limit

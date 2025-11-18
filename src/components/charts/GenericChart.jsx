@@ -13,7 +13,7 @@ import {
 import Spinner from 'react-bootstrap/Spinner';
 import { Bar, Line } from 'react-chartjs-2';
 
-// --- REGISTER EVERYTHING ONCE ---
+// Register components
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -26,19 +26,19 @@ ChartJS.register(
 );
 
 export const GenericChart = ({
-    endpoint,           // The API string (e.g. ENDPOINTS.CALLS.GET_ALL)
-    title,              // "Calls by Hour"
-    type = 'bar',       // 'bar' or 'line'
-    limit = 10,         // How many items to fetch
-    labelKey = 'item',  // Which field contains the label? ('item' or 'itemname')
-    processLabel = (l) => l, // Optional function to clean up labels
-    orientation = 'y'   // 'y' for horizontal bars, 'x' for vertical
+    endpoint,
+    title,
+    type = 'bar',
+    limit = 10,
+    processLabel = (l) => l,
+    orientation = 'y' // Defaults to Horizontal bars (Label on Left)
 }) => {
 
-    // 1. The Hook
     const { data: chartData, isLoading } = useApiDataEndpoint(endpoint, limit);
 
-    // 2. Guard Clause
+    console.log(`[${title}] Data:`, chartData);
+
+
     if (isLoading) {
         return (
             <div className="d-flex justify-content-center align-items-center p-5" style={{ minHeight: '200px' }}>
@@ -51,17 +51,38 @@ export const GenericChart = ({
         return <div className="text-center p-4 text-muted">No data available for {title}</div>;
     }
 
-    // 3. Prepare Data
+    // --- PARANOID DATA NORMALIZER ---
+    const normalizedData = chartData.map(rawItem => {
+        // 1. FIND LABEL: Check all known variations
+        const rawLabel = rawItem.item || rawItem.itemname || rawItem.agency || "Unknown";
+
+        // 2. FIND VALUE: Check 'itemcount', 'count', or 'value'
+        const rawValue = rawItem.itemcount || rawItem.count || rawItem.value;
+
+        // 3. CLEAN VALUE: Remove commas and force to number
+        //    "4,689" -> 4689.  "4689" -> 4689.  undefined -> 0.
+        const stringValue = String(rawValue || 0).replace(/,/g, '');
+        const cleanValue = Number(stringValue);
+
+        return {
+            label: processLabel(rawLabel),
+            value: isNaN(cleanValue) ? 0 : cleanValue
+        };
+    });
+
+    // --- DEBUG: UNCOMMENT TO SEE DATA IN CONSOLE ---
+    // console.log(`[${title}] Final Data:`, normalizedData);
+
     const formattedData = {
-        labels: chartData.map(item => processLabel(item[labelKey])),
+        labels: normalizedData.map(d => d.label),
         datasets: [
             {
                 label: title,
-                data: chartData.map(item => item.itemcount),
+                data: normalizedData.map(d => d.value),
                 backgroundColor: '#0766D1',
                 borderColor: 'rgba(0, 0, 0, 0.8)',
                 borderWidth: 1,
-                // For horizontal bars
+                // IMPORTANT: 'y' = Horizontal Bar, 'x' = Vertical Bar
                 indexAxis: orientation,
             },
         ],
@@ -69,18 +90,17 @@ export const GenericChart = ({
 
     const options = {
         responsive: true,
+        maintainAspectRatio: true,
         plugins: {
             legend: { display: false },
             title: { display: false },
         },
-        // Make sure we start at 0
         scales: {
             x: { beginAtZero: true },
             y: { beginAtZero: true }
         }
     };
 
-    // 4. Render the correct type
     return (
         <div className="mb-4">
             <h5>{title}</h5>

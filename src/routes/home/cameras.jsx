@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
 
@@ -11,21 +11,24 @@ export const TrafficCameras = () => {
 
     const cameras = [
         {
-            title: 'I-87 at NC-96',
-            imgUrl: 'https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I87_Arendell.JPG&t=1747305658098',
+            title: 'I-87 at Neuse River',
+            imgUrl: 'https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I87_NeuseRiver.JPG&t=1739970465341',
+        },
+        {
+            title: 'I-87 at Lizard Lick',
+            imgUrl: 'https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I87_LizardLickRd.JPG&t=1763478892051',
         },
         {
             title: 'I-87 at Green Pace',
             imgUrl: 'https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I87_mm434.JPG&t=1747305560393',
         },
         {
-            title: 'I-87 at Neuse River',
-            imgUrl: 'https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I87_NeuseRiver.JPG&t=1739970465341',
+            title: 'I-87 at NC-96',
+            imgUrl: 'https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I87_Arendell.JPG&t=1747305658098',
         },
-        {
-            title: 'I-540 at I-87',
-            imgUrl: 'https://eapps.ncdot.gov/services/traffic-prod/v1/cameras/images?filename=I540_I87.JPG&t=1739970588254',
-        },
+
+
+
 
 
     ];
