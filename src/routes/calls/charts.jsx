@@ -1,34 +1,51 @@
-
-
-//--- CUSTOM IMPORTS: CHARTS
-import { CallCountsByAgencyBarChart } from './charts/call_counts_by_agency';
-import { CallCountsByIncidentBarChart } from './charts/call_counts_by_incident';
-//import { CallCountsByEmdCodeBarChart } from './charts/call_counts_by_emd_code';
-import { CallCountsByHourLineChart } from './charts/call_counts_by_hour';
-import { CallCountsByDayBarChart } from './charts/call_counts_by_day';
+//--- IMPORTS
+import { GenericChart } from '@/components/charts/GenericChart';
+import { ENDPOINTS } from '@/config/apiEndpoints';
 
 export const PageDataCharts = () => {
     return (
-        <>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md">
-                        <CallCountsByAgencyBarChart />
-                    </div>
-                    <div className="col-md">
-                        <CallCountsByIncidentBarChart />
-                    </div>
+        <div className="container">
+
+            {/* ROW 1: Agency & Incident Types */}
+            <div className="row mb-4">
+                <div className="col-md-6">
+                    <GenericChart
+                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_AGENCY} // or "getCallCountsByAgency"
+                        title="Responding Agency"
+                        type="bar"
+                        // We can pass that inline function right here!
+                        processLabel={(l) => l.replace("Department", "").replace("Dept", "")}
+                    />
                 </div>
-                <div className="row">
-                    <div className="col-md">
-                        <CallCountsByDayBarChart />
-                    </div>
-                    <div className="col-md">
-                        <CallCountsByHourLineChart />
-                    </div>
+                <div className="col-md-6">
+                    <GenericChart
+                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_TYPE} // or "getCallCountsByIncident"
+                        title="Call Types"
+                        type="bar"
+                    />
                 </div>
             </div>
-        </>
-    )
 
-}
+            {/* ROW 2: Days & Hours */}
+            <div className="row">
+                <div className="col-md-6">
+                    <GenericChart
+                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_DAY} // or "getCallCountsByDayOfWeek"
+                        title="Calls by Day"
+                        type="bar"
+                        labelKey="itemname" // This chart used 'itemname' instead of 'item'
+                    />
+                </div>
+                <div className="col-md-6">
+                    <GenericChart
+                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_HOUR} // or "getCallCountsByHour"
+                        title="Calls by Hour"
+                        type="line"
+                        limit={25} // This chart needed a higher limit
+                    />
+                </div>
+            </div>
+
+        </div>
+    );
+};
