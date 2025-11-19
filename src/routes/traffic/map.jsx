@@ -77,7 +77,6 @@ export const PageDataMap = () => {
 
     return (
         <>
-            <h5>Map</h5>
             <PageMap data={mapData} />
         </>
     );

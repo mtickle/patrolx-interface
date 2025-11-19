@@ -90,7 +90,6 @@ export const PageDataMap = () => {
     if (isLoading) return <div>Loading...</div>;
     return (
         <>
-            <h5>Map</h5>
             <PageMap data={mapData} />
         </>
     );
