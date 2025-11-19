@@ -9,7 +9,11 @@ export const ENDPOINTS = {
         COUNTS_BY_HOUR: "getCallCountsByHour"
     },
     INCIDENTS: {
-        GET_ALL: "getIncidents", // Based on your route names
+        COUNTS_BY_DISTRICT: "getIncidentCountsByDistrict",
+        COUNTS_BY_DAY: "getIncidentCountsByDayOfWeek",
+        COUNTS_BY_HOUR: "getIncidentCountsByHour",
+        COUNTS_BY_TYPE: "getincidentcountsbytype"
+
     },
     TRAFFIC: {
         STOPS: "getTrafficStops",

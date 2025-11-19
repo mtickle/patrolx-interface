@@ -1,4 +1,3 @@
-import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint';
 import {
     BarElement,
     CategoryScale,
@@ -13,7 +12,10 @@ import {
 import Spinner from 'react-bootstrap/Spinner';
 import { Bar, Line } from 'react-chartjs-2';
 
-// Register components
+// --- CUSTOM IMPORTS ---
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint';
+
+// Register components ONCE
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -34,10 +36,10 @@ export const GenericChart = ({
     orientation = 'y'
 }) => {
 
+    //--- Fetch the data from the API
     const { data: chartData, isLoading } = useApiDataEndpoint(endpoint, limit);
 
-
-
+    //--- Guard clause
     if (isLoading) {
         return (
             <div className="d-flex justify-content-center align-items-center p-5" style={{ minHeight: '200px' }}>
@@ -50,22 +52,24 @@ export const GenericChart = ({
         return <div className="text-center p-4 text-muted">No data available for {title}</div>;
     }
 
-    // --- THE CLEAN DATA MAPPING ---
-    // We trust the API now. It returns 'label' (text) and 'value' (number).
+    // --- FINAL RENDER CONFIGURATION ---
+
+    // Determine axis settings
+    const isHorizontalBar = (type === 'bar' && orientation === 'y');
+    const indexAxis = isHorizontalBar ? 'y' : 'x'; // 'y' for horizontal bars, 'x' for vertical/line charts
+
     const formattedData = {
-        // Map directly to the 'label' key. We keep processLabel() just in case 
-        // you want to do frontend formatting (like capitalizing words).
+
         labels: chartData.map(d => processLabel(d.label)),
 
         datasets: [
             {
                 label: title,
-                // Map directly to the 'value' key. No Number() casting needed.
                 data: chartData.map(d => d.value),
                 backgroundColor: '#0766D1',
                 borderColor: 'rgba(0, 0, 0, 0.8)',
                 borderWidth: 1,
-                indexAxis: orientation,
+                indexAxis: indexAxis, // Applied dynamically
             },
         ],
     };
@@ -77,17 +81,7 @@ export const GenericChart = ({
             legend: { display: false },
             title: { display: false },
         },
-        scales: {
-            // 🚨 FIX: Ensure the value axis is recognized as linear 🚨
-            x: {
-                type: 'linear', // Explicitly define X as linear for horizontal bars
-                beginAtZero: true
-            },
-            y: {
-                type: 'category', // Explicitly define Y as category for horizontal bars
-                beginAtZero: true
-            }
-        }
+
     };
 
     return (
