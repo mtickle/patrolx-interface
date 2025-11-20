@@ -16,11 +16,14 @@ export const ENDPOINTS = {
 
     },
     TRAFFIC: {
-        STOPS: "getTrafficStops",
-        CRASHES: "getCrashLocations",
+        COUNTS_BY_DESCRIPTION: "getTrafficStopDescriptionCounts",
+        COUNTS_BY_GENDER: "getTrafficStopGenderCounts",
+        COUNTS_BY_MAKE: "getTrafficStopMakeCounts",
+        COUNTS_BY_RACE: "getTrafficStopRaceCounts"
     },
-    ROADS: {
-        INCIDENTS: "getRoadIncidents",
+    CRASHES: {
+        COUNTS_BY_TYPE: "getCrashTypeCounts",
+        COUNTS_BY_LOCATION: "getCrashesByLocation"
     },
     // Add the rest here as you find them
 };

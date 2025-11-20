@@ -1,22 +1,29 @@
-//--- CUSTOM IMPORTS: CHARTS
-import { CrashCountsByTypeBarChart } from './charts/crash_counts_by_type';
-import { CrashCountsByLocationBarChart } from './charts/crash_counts_by_location';
-
+//--- IMPORTS
+import { GenericChart } from '@/components/charts/GenericChart';
+import { ENDPOINTS } from '@/config/apiEndpoints';
 
 export const PageDataCharts = () => {
     return (
-        <>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md">
-                        <CrashCountsByTypeBarChart />
-                    </div>
-                    <div className="col-md">
-                        <CrashCountsByLocationBarChart />
-                    </div>
+        <div className="container">
+
+            <div className="row mb-4">
+                <div className="col-md-6">
+                    <GenericChart
+                        endpoint={ENDPOINTS.CRASHES.COUNTS_BY_LOCATION}
+                        title="Location"
+                        type="bar"
+                    />
+                </div>
+                <div className="col-md-6">
+                    <GenericChart
+                        endpoint={ENDPOINTS.CRASHES.COUNTS_BY_TYPE}
+                        title="Crash Types"
+                        type="bar"
+                    />
                 </div>
             </div>
-        </>
-    )
 
-}
+
+        </div>
+    );
+};

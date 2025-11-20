@@ -6,15 +6,12 @@ export const PageDataCharts = () => {
     return (
         <div className="container">
 
-            {/* ROW 1: Agency & Incident Types */}
             <div className="row mb-4">
                 <div className="col-md-6">
                     <GenericChart
                         endpoint={ENDPOINTS.INCIDENTS.COUNTS_BY_DISTRICT}
                         title="Districts"
                         type="bar"
-                        // We can pass that inline function right here!
-                        processLabel={(l) => l.replace("Department", "").replace("Dept", "")}
                     />
                 </div>
                 <div className="col-md-6">
@@ -26,7 +23,7 @@ export const PageDataCharts = () => {
                 </div>
             </div>
 
-            {/* ROW 2: Days & Hours */}
+
             <div className="row">
                 <div className="col-md-6">
                     <GenericChart

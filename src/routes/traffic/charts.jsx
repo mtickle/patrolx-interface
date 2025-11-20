@@ -1,33 +1,47 @@
-
-//--- CUSTOM IMPORTS: CHARTS
-import { TrafficStopsCountsByDescriptionBarChart } from './charts/trafficstop_counts_by_description';
-import { TrafficStopsCountsByMakeBarChart } from './charts/trafficstop_counts_by_make';
-import { TrafficStopsCountsByRaceBarChart } from './charts/trafficstop_counts_by_race';
-import { TrafficStopsCountsByGenderBarChart } from './charts/trafficstop_counts_by_gender';
-
+//--- IMPORTS
+import { GenericChart } from '@/components/charts/GenericChart';
+import { ENDPOINTS } from '@/config/apiEndpoints';
 
 export const PageDataCharts = () => {
     return (
-        <>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md">
-                        <TrafficStopsCountsByDescriptionBarChart />
-                    </div>
-                    <div className="col-md">
-                        <TrafficStopsCountsByMakeBarChart />
-                    </div>
+        <div className="container">
+
+            <div className="row mb-4">
+                <div className="col-md-6">
+                    <GenericChart
+                        endpoint={ENDPOINTS.TRAFFIC.COUNTS_BY_DESCRIPTION}
+                        title="Descriptions"
+                        type="bar"
+                    />
                 </div>
-                <div className="row">
-                    <div className="col-md">
-                        <TrafficStopsCountsByRaceBarChart />
-                    </div>
-                    <div className="col-md">
-                        <TrafficStopsCountsByGenderBarChart />
-                    </div>
+                <div className="col-md-6">
+                    <GenericChart
+                        endpoint={ENDPOINTS.TRAFFIC.COUNTS_BY_GENDER}
+                        title="Genders"
+                        type="bar"
+                    />
                 </div>
             </div>
-        </>
-    )
 
-}
+
+            <div className="row">
+                <div className="col-md-6">
+                    <GenericChart
+                        endpoint={ENDPOINTS.TRAFFIC.COUNTS_BY_MAKE}
+                        title="Stops by Make"
+                        type="bar"
+                    />
+                </div>
+                <div className="col-md-6">
+                    <GenericChart
+                        endpoint={ENDPOINTS.TRAFFIC.COUNTS_BY_RACE}
+                        title="Stops by Race"
+                        type="line"
+                        limit={25} // This chart needed a higher limit
+                    />
+                </div>
+            </div>
+
+        </div>
+    );
+};

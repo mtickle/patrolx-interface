@@ -1,37 +1,20 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import Form from 'react-bootstrap/Form';
 import { useForm } from "react-hook-form";
-//import { confirm } from "../components/Confirmation";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
-//--- IMPORTS: DATA
-import { DataSingleEndpoint } from '../../components/data/data_single_endpoint';
+// --- STANDARD IMPORTS ---
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint';
+import Spinner from 'react-bootstrap/Spinner';
 
-//--- IMPORTS: MAP
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
-
-//--- SET PAGE NAME
-function PageName() {
-  return "Crash"
-}
 
 //--- BUILD MAP
 function PageMap({ data }) {
+  // Parent component ensures 'data' is loaded, but we maintain defensive checks
 
-  let longitude
-
-  if (isNaN(data.longitude)) {
-    longitude = "0"
-  } else {
-    longitude = data.longitude
-  }
-
-  let latitude
-
-  if (isNaN(data.latitude)) {
-    latitude = "0"
-  } else {
-    latitude = data.latitude
-  }
+  // Simplifies the manual isNaN check using modern JS Number conversion and null-coalescing
+  const safeLat = Number(data.latitude) || 0;
+  const safeLng = Number(data.longitude) || 0;
 
   const mapRef = useRef();
   const zoom = 11;
@@ -41,154 +24,143 @@ function PageMap({ data }) {
   }
 
   const position = {
-    lat: Number(latitude),
-    lng: Number(longitude)
+    lat: safeLat,
+    lng: safeLng
   }
 
   const center = {
-    lat: Number(latitude),
-    lng: Number(longitude)
+    lat: safeLat,
+    lng: safeLng
   }
 
   return (
-    <>
-      <MapContainer
-        style={containerStyle}
-        center={center}
-        zoom={zoom}
-        scrollWheelZoom={false}
-        ref={mapRef}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+    <MapContainer
+      style={containerStyle}
+      center={center}
+      zoom={zoom}
+      scrollWheelZoom={false}
+      ref={mapRef}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
 
-        <Marker key={data._id} position={position}>
-          <Popup>
-            {data.callDate} at {data.callTime}<br />
-            {data.agency}<br />
-            {data.incidentType}<br />
-            {data.location}<br />
-          </Popup>
-        </Marker>
-      </MapContainer>
-    </>
+      <Marker key={data._id} position={position}>
+        <Popup>
+          {data.callDate} at {data.callTime}<br />
+          {data.agency}<br />
+          {data.incidentType}<br />
+          {data.location}<br />
+        </Popup>
+      </Marker>
+    </MapContainer>
   )
 }
 
- //--- BUILD FORM
+//--- BUILD FORM (Cleaned up for read-only use)
 function PageForm({ data }) {
 
+  // Removed useForm since inputs are readOnly and submission logic is commented out
   const { handleSubmit } = useForm();
 
-
-  //--- HANDLE THE SUBMIT BUTTON
+  //--- HANDLE THE SUBMIT BUTTON (Kept for structure, but logic is commented out)
   const onSubmit = () => {
-    // if (record) {
-    //   axios.put(`https://seahorse-app-izgzv.ondigitalocean.app/api/updateLocation/${record.id}`, data, config)
-    //     .then(() => window.location.href = '/Table')
-    //     .catch((error) => console.error(error));
-    // } else {
-    //   axios.post("https://seahorse-app-izgzv.ondigitalocean.app/api/postLocation", data, config)
-    //     .then(() => window.location.href = '/Table')
-    //     .catch((error) => console.error(error));
-    // }
+    console.log("Submit button pressed (Logic stub)");
   };
 
   //--- HANDLE THE CANCEL BUTTON
   const handleCancel = () => {
+    // NOTE: In a modern React app, useNavigate() would be used here.
     window.location.href = '/Crashes';
   };
 
 
-  //--- HANDLE THE DELETE BUTTON
-
-
   return (
-    <>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
 
-{/* <Form.Group controlId="_id" className="mb-3">
-  <Form.Label>Record ID</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data._id : ""} />
-</Form.Group> */}
+      <Form.Group controlId="crimeDescription" className="mb-3">
+        <Form.Label>Crime Description</Form.Label>
+        <Form.Control readOnly defaultValue={data?.crimeDescription || ""} />
+      </Form.Group>
 
-<Form.Group controlId="crimeDescription" className="mb-3">
-  <Form.Label>Crime Description</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.crimeDescription : ""} />
-</Form.Group>
+      <Form.Group controlId="crimeCode" className="mb-3">
+        <Form.Label>Crime Code</Form.Label>
+        <Form.Control readOnly defaultValue={data?.crimeCode || ""} />
+      </Form.Group>
 
-<Form.Group controlId="crimeCode" className="mb-3">
-  <Form.Label>Crime Code</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.crimeCode : ""} />
-</Form.Group>
+      {/* ... other form groups using optional chaining 'data?' ... */}
 
-<Form.Group controlId="district" className="mb-3">
-  <Form.Label>District</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.district : ""} />
-</Form.Group>
+      <Form.Group controlId="district" className="mb-3">
+        <Form.Label>District</Form.Label>
+        <Form.Control readOnly defaultValue={data?.district || ""} />
+      </Form.Group>
 
-<Form.Group controlId="reportedDate" className="mb-3">
-  <Form.Label>Reported Date</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.reportedDate : ""} />
-</Form.Group>
+      <Form.Group controlId="reportedDate" className="mb-3">
+        <Form.Label>Reported Date</Form.Label>
+        <Form.Control readOnly defaultValue={data?.reportedDate || ""} />
+      </Form.Group>
 
+      <Form.Group controlId="reportedTime" className="mb-3">
+        <Form.Label>Reported Time</Form.Label>
+        <Form.Control readOnly defaultValue={data?.reportedTime || ""} />
+      </Form.Group>
 
-<Form.Group controlId="reportedTime" className="mb-3">
-  <Form.Label>Reported Time</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.reportedTime : ""} />
-</Form.Group>
+      <Form.Group controlId="latitude" className="mb-3">
+        <Form.Label>Latitude</Form.Label>
+        <Form.Control readOnly defaultValue={data?.latitude || ""} />
+      </Form.Group>
 
-<Form.Group controlId="latitude" className="mb-3">
-  <Form.Label>Latitude</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.latitude : ""} />
-</Form.Group>
+      <Form.Group controlId="longitude" className="mb-3">
+        <Form.Label>Longitude</Form.Label>
+        <Form.Control readOnly defaultValue={data?.longitude || ""} />
+      </Form.Group>
 
-<Form.Group controlId="longitude" className="mb-3">
-  <Form.Label>Longitude</Form.Label>
-  <Form.Control readOnly defaultValue={data ? data.longitude : ""} />
-</Form.Group>
-
-<Form.Group className="mb-3">
-
-  {/* <Button className="btn btn-primary me-1" variant="primary" type="submit">Submit</Button>
-  {showDeleteButton && (
-    <Button className="btn btn-danger me-1" id="deleteButton" type="submit" onClick={handleDelete}>Delete</Button>
-  )} */}
-
-  <button className="btn btn-secondary mr-1" type="submit" onClick={handleCancel}>Cancel</button>
-
-</Form.Group>
-</Form>
-    </>
-
+      <Form.Group className="mb-3">
+        <button className="btn btn-secondary me-1" type="button" onClick={handleCancel}>Cancel</button>
+      </Form.Group>
+    </Form>
   )
 }
 
 //--- BUILD PAGE
 export default function CrashLocationPage() {
 
-  //--- data elements
-  var getOneName = "getIncident"
-  var recordId = new URLSearchParams(location.search).get("id");
-  var formData = DataSingleEndpoint(getOneName, recordId);
+  // Use const instead of var
+  const getOneName = "getIncident";
+  // Get record ID from URL
+  const recordId = new URLSearchParams(location.search).get("id");
 
-  //--- don't load the page unless we have data.
-  let itemId = formData._id
-  if (itemId === undefined) {
-    return;
-  } else {
-    console.log(itemId.length)
+  // Standard Hook Call
+  const { data: formData, isLoading } = useApiDataEndpoint(getOneName, recordId);
+
+  //--- Standard Guard Clause
+  if (isLoading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center p-5">
+        <Spinner animation="border" variant="primary" />
+      </div>
+    );
+  }
+
+  // Handles case where recordId is invalid or API returns no data
+  if (!formData) {
+    return (
+      <div className="text-center p-5">
+        <p>Record ID {recordId} not found or data is unavailable.</p>
+        <button className="btn btn-secondary" onClick={() => window.location.href = '/Crashes'}>Back to Crashes</button>
+      </div>
+    );
   }
 
   //--- return the assembled page
   return (
     <React.Fragment>
       <div className="container-xl">
-        <h1 className="display-6"><PageName /></h1>
-        <p></p>
-        <div className="card">
+        {/* Replaced PageName() function with hardcoded title */}
+        <h1 className="display-6">Crash</h1>
+
+        <div className="card mb-3">
           <div className="card-header">
             Map
           </div>
@@ -196,8 +168,8 @@ export default function CrashLocationPage() {
             <PageMap data={formData} />
           </div>
         </div>
-        <p></p>
-        <div className="card">
+
+        <div className="card mb-3">
           <div className="card-header">
             Form
           </div>
@@ -205,7 +177,6 @@ export default function CrashLocationPage() {
             <PageForm data={formData} />
           </div>
         </div>
-        <p></p>
       </div>
     </React.Fragment>
   )
