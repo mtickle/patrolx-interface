@@ -28,7 +28,7 @@ export default function CallsPage() {
 
       <div className="card">
         <div className="card-header">
-          Maps
+          Map
         </div>
         <div className="card-body">
           <PageDataMap />

@@ -25,5 +25,11 @@ export const ENDPOINTS = {
         COUNTS_BY_TYPE: "getCrashTypeCounts",
         COUNTS_BY_LOCATION: "getCrashesByLocation"
     },
-    // Add the rest here as you find them
+    ARRESTS: {
+        COUNTS_BY_AGE: "getArrestAgeCounts",
+        COUNTS_BY_AGENCY: "getArrestAgencyCounts",
+        COUNTS_BY_CHARGE: "getArrestChargeCounts",
+        COUNTS_BY_OFFICER: "getArrestOfficerCounts"
+    }
+
 };

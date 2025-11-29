@@ -1,23 +1,19 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/layout/layout';
-import HomePage from './routes/home';
-import CallsPage from './routes/calls'
-import CallPage from './routes/calls/call';
-import IncidentsPage from './routes/incidents';
-import IncidentPage from './routes/incidents/incident';
 import ArrestsPage from './routes/arrests';
-import ArrestPage from './routes/arrests/arrest';
-import TrafficStopsPage from './routes/traffic';
+import CallsPage from './routes/calls';
 import CrashLocationsPage from './routes/crashes';
-import CrashLocationPage from './routes/crashes/crash';
+import HomePage from './routes/home';
+import IncidentsPage from './routes/incidents';
 import RoadIncidentsPage from './routes/roadincidents';
+import TrafficStopsPage from './routes/traffic';
 
 const App = () => {
 
-   const { isAuthenticated, loginWithRedirect, logout, isLoading, user } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, isLoading, user } = useAuth0();
 
-   
+
 
   return (
     <BrowserRouter basename="/patrolx-interface">
@@ -29,6 +25,7 @@ const App = () => {
           <Route path="trafficstops" element={<TrafficStopsPage />} />
           <Route path="crashlocations" element={<CrashLocationsPage />} />
           <Route path="roadincidents" element={<RoadIncidentsPage />} />
+          <Route path="arrests" element={<ArrestsPage />} />
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>

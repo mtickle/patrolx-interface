@@ -26,6 +26,7 @@ export default function Header() {
                         <Nav.Link as={Link} to="/roadincidents">Roads</Nav.Link>
                         <Nav.Link as={Link} to="/trafficstops">Traffic Stops</Nav.Link>
                         <Nav.Link as={Link} to="/crashlocations">Crash Locations</Nav.Link>
+                        <Nav.Link as={Link} to="/arrests">Arrests</Nav.Link>
                         {/* I removed the extra "Home" link */}
                     </Nav>
 

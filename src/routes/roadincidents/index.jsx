@@ -1,4 +1,4 @@
- 
+
 
 //--- CUSTOM IMPORTS: CHARTS
 //import { PageDataCharts } from './charts';
@@ -22,19 +22,9 @@ export default function RoadIncidentsPage() {
     <div className="container-xl">
       <h1 className="display-6"><PageName /></h1>
 
-    {/* <p></p>
       <div className="card">
         <div className="card-header">
-          Charts
-        </div>
-        <div className="card-body">
-          <PageDataCharts />
-        </div>
-      </div> */}
-
-      <div className="card">
-        <div className="card-header">
-          Maps
+          Map
         </div>
         <div className="card-body">
           <PageDataMap />

@@ -36,7 +36,7 @@ export const PageDataCharts = () => {
                     <GenericChart
                         endpoint={ENDPOINTS.TRAFFIC.COUNTS_BY_RACE}
                         title="Stops by Race"
-                        type="line"
+                        type="bar"
                         limit={25} // This chart needed a higher limit
                     />
                 </div>

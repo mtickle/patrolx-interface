@@ -63,7 +63,6 @@ export const PageDataTable = () => {
 
     return (
         <>
-            <h5>Data Table</h5>
             <PageTable columns={tableColumns} data={tableData} />
         </>
     );
