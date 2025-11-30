@@ -6,21 +6,24 @@ export const PageDataCharts = () => {
     return (
         <div className="container">
 
-            {/* ROW 1: Agency & Incident Types */}
+            {/* COUNTS_BY_AGE: "getArrestAgeCounts",
+        COUNTS_BY_AGENCY: "getArrestAgencyCounts",
+        COUNTS_BY_CHARGE: "getArrestChargeCounts",
+        COUNTS_BY_OFFICER: "getArrestOfficerCounts" */}
+
             <div className="row mb-4">
                 <div className="col-md-6">
                     <GenericChart
-                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_AGENCY}
-                        title="Responding Agency"
+                        endpoint={ENDPOINTS.ARRESTS.COUNTS_BY_AGE}
+                        title="Arrests by Age"
                         type="bar"
-                        // We can pass that inline function right here!
-                        processLabel={(l) => l.replace("Department", "").replace("Dept", "")}
+
                     />
                 </div>
                 <div className="col-md-6">
                     <GenericChart
-                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_TYPE}
-                        title="Call Types"
+                        endpoint={ENDPOINTS.ARRESTS.COUNTS_BY_AGENCY}
+                        title="Arrests by Agency"
                         type="bar"
                     />
                 </div>
@@ -30,16 +33,16 @@ export const PageDataCharts = () => {
             <div className="row">
                 <div className="col-md-6">
                     <GenericChart
-                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_DAY}
-                        title="Calls by Day"
+                        endpoint={ENDPOINTS.ARRESTS.COUNTS_BY_CHARGE}
+                        title="By Charge"
                         type="bar"
                     />
                 </div>
                 <div className="col-md-6">
                     <GenericChart
-                        endpoint={ENDPOINTS.CALLS.COUNTS_BY_HOUR}
-                        title="Calls by Hour"
-                        type="line"
+                        endpoint={ENDPOINTS.ARRESTS.COUNTS_BY_OFFICER}
+                        title="By Officer"
+                        type="bar"
                         limit={25} // This chart needed a higher limit
                     />
                 </div>

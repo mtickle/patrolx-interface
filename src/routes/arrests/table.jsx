@@ -2,7 +2,7 @@
 import React from "react";
 
 //--- STANDARD IMPORTS: DATA
-//import { useDataEndpoint } from "../../hooks/data_endpoint";
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 
 //-- STANDARD IMPORTS: TABLE
 import DataTable from '../../components/layout/data_table';
@@ -23,7 +23,7 @@ function TableColumns() {
             },
             {
                 Header: 'Time',
-                accessor: 'timeOfArrest',
+                accessor: 'time_of_arrest',
             },
             {
                 Header: 'Name',
@@ -59,9 +59,9 @@ function TableColumns() {
 export const PageDataTable = () => {
 
     //--- LOAD DATA
-    var getAllName = "getAllCcbiArrests"
+    var getAllName = "getAllArrests"
     var tableColumns = TableColumns();
-    const { data: tableData } = useDataEndpoint(getAllName, 100);
+    const { data: tableData } = useApiDataEndpoint(getAllName, 100);
 
     return (
         <>
