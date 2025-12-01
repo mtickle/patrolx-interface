@@ -35,6 +35,9 @@ export const useApiDataEndpoint = (apiEndPoint, itemCount) => {
             baseURL: API_BASE_URL + apiEndPoint
         });
 
+        console.log(API_BASE_URL + apiEndPoint);
+
+
         client.get('?limit=' + itemCount, config)
             .then((response) => {
                 setData(response.data);

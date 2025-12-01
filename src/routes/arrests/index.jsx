@@ -1,4 +1,4 @@
- 
+
 
 //--- CUSTOM IMPORTS: CHARTS
 import { PageDataCharts } from './charts';
@@ -7,7 +7,6 @@ import { PageDataCharts } from './charts';
 import { PageDataTable } from './table';
 
 //--- CUSTOM IMPORTS: DATA MAP
-import { PageDataMap } from './map';
 
 //--- SET PAGE NAME
 function PageName() {
@@ -21,22 +20,22 @@ export default function ArrestsPage() {
   return (
     <div className="container-xl">
       <h1 className="display-6"><PageName /></h1>
-      <div className="card">
-  <div className="card-header">
-    Maps
-  </div>
-  <div className="card-body">
-    <PageDataMap />
-  </div>
-</div>
+      {/* <div className="card">
+        <div className="card-header">
+          Maps
+        </div>
+        <div className="card-body">
+          <PageDataMap />
+        </div>
+      </div>
+      <p></p> */}
       <p></p>
-    <p></p>
       <div className="card">
         <div className="card-header">
           Charts
         </div>
         <div className="card-body">
-          <PageDataCharts /> 
+          <PageDataCharts />
         </div>
       </div>
       <p></p>

@@ -65,7 +65,7 @@ function PageMap({ data }) {
 export const PageDataMap = () => {
 
     //--- LOAD DATA
-    var getAllName = "getAllCcbiArrests"
+    var getAllName = "getAllArrests"
     const { data: mapData } = useApiDataEndpoint(getAllName, 20);
 
     return (
