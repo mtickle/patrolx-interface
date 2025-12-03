@@ -35,7 +35,8 @@ export const useApiDataEndpoint = (apiEndPoint, itemCount) => {
             baseURL: API_BASE_URL + apiEndPoint
         });
 
-        console.log(API_BASE_URL + apiEndPoint);
+        // console.log("*** ApiDataEndpoint URL")
+        // console.log(API_BASE_URL + apiEndPoint);
 
 
         client.get('?limit=' + itemCount, config)
