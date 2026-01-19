@@ -2,6 +2,7 @@ import { useRef } from 'react';
 
 // //--- STANDARD IMPORTS: DATA
 //import { useDataEndpoint } from "../../hooks/data_endpoint";
+import { useApiDataEndpoint } from '@/hooks/useApiDataEndpoint.jsx';
 
 //--- STANDARD IMPORTS: MAP
 import "leaflet/dist/leaflet.css";
@@ -60,7 +61,7 @@ export const PageDataMap = () => {
 
     //--- LOAD DATA
     var getAllName = "getAllIncidents"
-    const { data: mapData } = useDataEndpoint(getAllName, 20);
+    const { data: mapData } = useApiDataEndpoint(getAllName, 20);
 
     return (
         <>
